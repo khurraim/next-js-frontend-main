@@ -1,0 +1,323 @@
+@font-face {
+  font-family: 'Anton-Regular';
+  src: url('../fonts/Anton-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,body {
+  overflow-x: hidden;
+}
+
+.wraper {
+  font-family: 'Anton-Regular', sans-serif;
+  letter-spacing: 1px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.nav-bar-container {
+  padding: 38px 38px;
+}
+
+.top-navbar .navbar-nav .nav-link {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+.top-navbar-second .navbar-nav .nav-link {
+  color: #000;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+.good-girls {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 45px;
+}
+
+.good-girls-second {
+  color: #000;
+  text-transform: uppercase;
+  font-size: 45px;
+}
+
+.gone-bad {
+  color: #FF3333;
+  text-transform: uppercase;
+  font-size: 45px;
+  padding-left: 22px;
+  line-height: 30px;
+}
+
+.main-container {
+  margin-left: 202px;
+  font-size: 72px;
+  padding-top: 70px;
+}
+
+.be-good {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.be-bad {
+  color: #FF3333;
+  text-transform: uppercase;
+  line-height: 32px;
+}
+
+
+/* Style for the container */
+.box-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90px;
+  margin-top: 80px;
+}
+
+/* Style for the small square box */
+.small-box {
+  width: 16px;
+  /* Adjust the width as needed */
+  height: 16px;
+  /* Adjust the height as needed */
+  border: 1px solid #fff;
+  box-sizing: border-box;
+}
+
+/* Style for the filled box */
+.filled-box {
+  background-color: #fff;
+  /* Adjust the background color as needed */
+}
+
+.custom-text-input {
+  background: #000;
+  color: #fff;
+  height: 78px;
+  border: none;
+  padding: 0px 30px;
+  font-size: 25px;
+  letter-spacing: 1px;
+}
+
+.custom-text-input:focus-visible {
+  border: none;
+  outline: none;
+}
+
+.custom-text-input::placeholder {
+  color: #fff;
+}
+
+.custom-footer {
+  color: #fff;
+  text-transform: uppercase;
+  padding: 20px 155px;
+}
+
+.custom-footer-second {
+  color: #000;
+  text-transform: uppercase;
+  padding: 20px 155px;
+}
+
+.payment-cards img {
+  height: 14px;
+}
+
+.top-text {
+  margin-top: 3%;
+  font-size: 15px;
+  text-align: center;
+  padding: 0 15%;
+  color: #000 !important;
+}
+
+.about-us-text{
+  margin-top: 3%;
+  font-size: 15px;
+  text-align: left;
+  padding: 0 27%;
+}
+
+.whats-app-number {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.whats-app-number div {
+  border: 2px solid #000;
+  width: 350px;
+  height: 64px;
+  display: inline-block;
+  text-align: center;
+
+}
+
+.whats-app-number div table {
+  display: inline-block;
+}
+
+.whats-app-number-icon {
+  font-size: 40px;
+  padding: 0 15px;
+}
+
+.custom-select {
+  border-radius: 0px;
+  padding: 8px 40px;
+  background: #fff;
+  border: 2px solid #000 !important;
+  margin: 2px;
+}
+
+.custom-select:focus-visible {
+  outline: none;
+}
+
+.custom-select option {
+  text-transform: capitalize;
+  border-radius: 0px;
+  padding: 8px 40px;
+  background: #fff;
+  border: 2px solid;
+  margin: 2px;
+}
+
+
+.custom-btn {
+  border-radius: 0px;
+  padding: 8px 40px;
+  background: #fff;
+  border: 2px solid #000;
+  margin: 2px;
+}
+
+.listing-section {
+  margin-top: 3%;
+  text-align: -webkit-center;
+}
+
+.custom-card {
+  width: 74%;
+  margin-top: 34%;
+}
+
+.custom-card.red {
+  background-color: #FF3333;
+}
+
+.custom-card.black {
+  background-color: #000;
+}
+
+.custom-card img {
+  position: relative;
+  top: -40px;
+  left: -25px;
+  width: 299px;
+}
+
+.card-info {
+  text-transform: uppercase;
+  color: #fff;
+  text-align: left;
+  position: relative;
+  top: -25px;
+  left: 25px;
+}
+
+.card-info .title {
+  font-size: 20px;
+}
+
+.card-info .location {
+  font-size: 12px;
+}
+
+.card-info .price {
+  font-size: 12px;
+}
+
+.btn-close {
+  background-color: #000;
+  opacity: inherit;
+  border-radius: unset;
+  color: #fff;
+}
+
+.btn-close:hover {
+  color: #fff;
+  opacity: unset;
+}
+
+.btn-close i {
+  position: relative;
+  top: -4px;
+  font-size: 20px;
+}
+
+.modal-content {
+  border-radius: unset;
+}
+
+.modal-header {
+  padding: 8px;
+  justify-content: end;
+  border-bottom: none;
+}
+.modal-xxl{
+  max-width: 65vw;
+}
+
+.modal-custom-card {
+  width: 78%;
+    margin-top: 8%;
+    margin-left: 10%;
+}
+
+
+.modal-custom-card.red {
+  background-color: #FF3333;
+}
+
+.modal-custom-card.black {
+  background-color: #000;
+}
+
+.modal-custom-card img {
+  position: relative;
+  top: -40px;
+  left: -25px;
+  width: 299px;
+}
+
+.top-card{
+  width: 980px;
+  display: inline-block;
+}
+.top-card .custom-card{
+  display: inline-block;
+  margin-top:40px;
+}
+.top-card .custom-card img{
+  width: 730px;
+}
+
+.uploaded-imgs div img{
+  width: 110px;
+  height: 130px;
+}
+
+.uploaded-imgs div i{
+  font-size: 22px;
+  font-weight: 900;
+  margin-right: 15px;
+  margin-left: 15px;
+}

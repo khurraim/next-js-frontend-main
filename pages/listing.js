@@ -432,7 +432,7 @@ function Listing()
                                                 `${model.id}`
                                                 // model
                                                 )}>
-                                            <img  src={`http://127.0.0.1:8000/storage/${model.featuredImage}`} alt=""/>
+                                            <img  src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model.featuredImage}`} alt=""/>
                                             <div class="card-info">
                                                 <div className="title">{model.title}</div>
                                                 <div className="location">{model.location}</div>

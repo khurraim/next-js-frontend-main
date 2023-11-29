@@ -17,7 +17,7 @@ const Modal = ({ imageUrl, aboutMe, age, nationality , dressSize, weight, video,
 
   useEffect(() => {
     // Fetch rates data from the API using the provided URL
-    fetch(`http://127.0.0.1:8000/api/models/rates/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/models/rates/${id}`)
       .then(response => response.json())
       .then(data => {
         // Assuming the rates are stored in the 'rates' property of the API response
@@ -28,7 +28,7 @@ const Modal = ({ imageUrl, aboutMe, age, nationality , dressSize, weight, video,
 
   useEffect(() => {
     // Fetch gallery images data from the API using the provided URL
-    fetch(`http://127.0.0.1:8000/api/models/gallery/${id}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/models/gallery/${id}`)
       .then(response => response.json())
       .then(data => {
         setGalleryImages(data);

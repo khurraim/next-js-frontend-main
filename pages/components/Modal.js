@@ -64,7 +64,7 @@ const Modal = ({ imageUrl, aboutMe, age, nationality , dressSize, weight, video,
           <div className='col-md-4 col-sm-4 col-lg-4 col-12'>
             
             {video && <video controls poster={imageUrl} style={{ width: '100%' }}>
-                <source src={`http://127.0.0.1:8000/storage/${video}`} type="video/mp4" />
+                <source src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${video}`} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>}
           </div>
@@ -123,7 +123,7 @@ const Modal = ({ imageUrl, aboutMe, age, nationality , dressSize, weight, video,
         <div className='row pt-4'>
             {galleryImages.map(image => (
               <div className='col-md-4 col-lg-4 col-sm-4 col-12'>
-                <img key={image.id} className='img-fluid'  src={`http://127.0.0.1:8000/storage/${image.image}`} alt={`Gallery Image ${image.id}`} />
+                <img key={image.id} className='img-fluid'  src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${image.image}`} alt={`Gallery Image ${image.id}`} />
               </div>
             ))}
         </div>

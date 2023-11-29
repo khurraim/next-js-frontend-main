@@ -116,7 +116,7 @@ const HeroCarousel = () => {
       >
         {groups.map((group, index) => (
           <SwiperSlide key={group.id}>
-            <div className="wraper container-fluid" style={{ backgroundImage: `url(${NEXT_PUBLIC_STORAGE_URL}/${group.image})` }}>
+            <div className="wraper container-fluid" style={{ backgroundImage: `url(${process.env.NEXT_PUBLIC_STORAGE_URL}/${group.image})` }}>
               <div className='main-container'>
                 <div style={{ height: '250px' }}></div>
                 <div className="be-good">{group.title}</div>

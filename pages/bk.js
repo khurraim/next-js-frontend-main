@@ -18,16 +18,25 @@ const WorkWithUs = () => {
     featuredImage: null,
     video: null,
     services: [{ name: ''}],
-    weight: ''
+    weight: '',
+    height: '',
+    phone_no: ''
   });
 
   const [loading, setLoading] = useState(true);
   const [selectedFiles,setSelectedFiles] = useState([]);
   const [images,setImages] = useState([]);
 
+  const [formSubmitted, setFormSubmitted] = useState(false); // New state variable
+
+
   const handleFileChange = (e) => {
-    const files = Array.from(e.target.files);
-    setSelectedFiles(files);
+    
+    //const files = Array.from(e.target.files);
+    //setSelectedFiles(files);
+
+    const files = Array.from(e.target.files).slice(0, 4); // Only take the first 4 files
+    setSelectedFiles(files)
 
     const filesArray = files.map((file) => URL.createObjectURL(file));
     setImages(filesArray);
@@ -88,6 +97,15 @@ const WorkWithUs = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setFormSubmitted(true);
+
+    console.log(selectedFiles);
+
+    if (selectedFiles.length > 4) {
+      toast.error('You can only upload a maximum of 4 pictures.');
+      return;
+    }
 
     // if title is empty
     if(formData.title === '')
@@ -178,7 +196,7 @@ const WorkWithUs = () => {
 
       
 
-      const response = await axios.post('http://127.0.0.1:8000/api/modelsByUser', formDataToSend, {
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/modelsByUser`, formDataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data', // Set the content type for file upload
         },
@@ -198,7 +216,9 @@ const WorkWithUs = () => {
         featuredImage: null,
         video: null,
         services: [{ name: ''}],
-        weight: ''
+        weight: '',
+        height: '',
+        phone_no: ''
       });
       toast.success("Model Created Successfully");
     } catch (error) {
@@ -210,208 +230,252 @@ const WorkWithUs = () => {
 
   return (
     <Layout>
-            <div className='container-fluid my-5'>
-              <h2>Add New Model</h2>
-              <form encType="multipart/form-data" onSubmit={handleSubmit}>
-                
-                <div className='card mb-5'>
-                    <div className='card-body'>
 
-                        <div className='form-group'>
-                            <label className='form-label'>Name</label>
-                            <input className='form-control' type="text" name="title" value={formData.title} onChange={handleChange} />
-                        </div>
+      <div className="text-center">
+        <div className="top-card">
+          <div className="custom-card red">
+            <img src="/images/model.jpg" alt="" />
+          </div>
+        </div>
+      </div>
 
-                        <div  className='form-group'>
-                            <label  className='form-label'>Location</label>
-                            <input  className='form-control' type="text" name="location" value={formData.location} onChange={handleChange} />
-                        </div>
+      <div className="about-us-text">
+  <h4>WORK WITH US</h4>
+  <div className="mt-3">We’re here to help and answer any question you might have.</div>
+  <div className="mt-3">*required field</div>
+  <div className="filters mt-5">
+    <form encType="multipart/form-data" onSubmit={handleSubmit}>
+      <div className="text-left">
+        <div className="row">
+          <div className="col-md-6">
+            <label className='text-uppercase  pb-2 pt-2'>Name</label>
+            <input 
+            type="text" 
+            name="title" 
+            className={`custom-select form-control ${formSubmitted && formData.title === '' ? 'border-danger' : ''}`}
+ 
+            value={formData.title} 
+            onChange={handleChange} 
+            />
+          </div>
+          <div className="col-md-6 ">
+            <label  className='text-uppercase pb-2 pt-2'>Location</label>
+            <input  
+            className={`custom-select form-control ${formSubmitted && formData.location === '' ? 'border-danger' : ''}`}
+            type="text" 
+            name="location" 
+            value={formData.location} 
+            onChange={handleChange} />
+          </div>
+          <div className="col-md-6">
+            <label  className='text-uppercase pb-2 pt-2'>Sub Location</label>
+            <input  
+                  className={`custom-select form-control ${formSubmitted && formData.subLocation === '' ? 'border-danger' : ''}`}
+                  type="text" 
+            name="subLocation" 
+            value={formData.subLocation} 
+            onChange={handleChange}/>
+          </div>
+          <div className="col-md-6">
+            <label  className='text-uppercase pb-2 pt-2'>age</label>
+            <input  
+                  className={`custom-select form-control ${formSubmitted && formData.age === '' ? 'border-danger' : ''}`}
+                  type='number' 
+            name="age" 
+            value={formData.age} 
+            onChange={handleChange}
+            />
+          </div>
+          <div className='col-md-12'>
+            <label  className='text-uppercase pb-2 pt-2'>description</label>
+            <textarea
+              name="modelDescription"
+              value={formData.modelDescription}
+              onChange={handleChange}
+              className={`custom-select form-control ${formSubmitted && formData.modelDescription === '' ? 'border-danger' : ''}`}
 
-                        <div  className='form-group'>
-                            <label  className='form-label'>Sub Location</label>
-                            <input  className='form-control' type="text" name="subLocation" value={formData.subLocation} onChange={handleChange} />
-                        </div>
+            />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor className="text-uppercase pb-2 pt-2">weight*</label>
+            
+            <input
+            type="number"
+            className={`custom-select form-control ${formSubmitted && formData.weight === '' ? 'border-danger' : ''}`}
 
-                        <div  className='form-group' >
-                            <label className='form-label'>Model Description</label>
-                            <textarea
-                                name="modelDescription"
-                                value={formData.modelDescription}
-                                onChange={handleChange}
-                                className='form-control'
-                            />
-                        </div>
+            name="weight"  
 
-                        <div  className='form-group' >
-                            <label className='form-label'>Age</label>
-                            <input
-                                type="number"
-                                className='form-control'
-                                name="age"  // Added the name attribute
+            value={formData.weight}
+            onChange={handleChange}
+            />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor className="text-uppercase pb-2 pt-2">dress size*</label>
+            <input
+              type="text"
+              className={`custom-select form-control ${formSubmitted && formData.dressSize === '' ? 'border-danger' : ''}`}
 
-                                value={formData.age}
-                                onChange={handleChange}
-                            />
-                        </div>
+              name="dressSize"
+              value={formData.dressSize}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor className="text-uppercase pb-2 pt-2">nationality*</label>
+            <input
+              type="text"
+              className={`custom-select form-control ${formSubmitted && formData.nationality === '' ? 'border-danger' : ''}`}
 
-                        <div  className='form-group' >
-                            <label className='form-label'>Weight</label>
-                            <input
-                                type="number"
-                                className='form-control'
-                                name="weight"  // Added the name attribute
+              name="nationality"
+              value={formData.nationality}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor className="text-uppercase pb-2 pt-2">price*</label>
+            <input
+              type="text"
+              className={`custom-select form-control ${formSubmitted && formData.price === '' ? 'border-danger' : ''}`}
+              name="price"
+              value={formData.price}
+              onChange={handleChange}
+            />
+          </div>
 
-                                value={formData.weight}
-                                onChange={handleChange}
-                            />
-                        </div>
+          <div className='col-md-6'>
+          <label htmlFor className="text-uppercase pb-2 pt-2">height*</label>
+            <input
+              type="text"
+              className={`custom-select form-control ${formSubmitted && formData.height === '' ? 'border-danger' : ''}`}
+              name="height"
+              value={formData.height}
+              onChange={handleChange}
+            />
+          </div>
 
-                        <div  className='form-group' >
-                            <label className='form-label'>Nationality</label>
-                            <input
-                                type="text"
-                                className='form-control'
-                                name='nationality'
-                                value={formData.nationality}
-                                onChange={handleChange}
-                            />
-                        </div>
+          <div className='col-md-6'>
+          <label htmlFor className="text-uppercase pb-2 pt-2">phone no*</label>
+            <input
+              type="text"
+              className={`custom-select form-control ${formSubmitted && formData.phone_no === '' ? 'border-danger' : ''}`}
+              name="phone_no"
+              value={formData.phone_no}
+              onChange={handleChange}
+            />
+          </div>
 
-                        <div  className='form-group' >
-                            <label className='form-label'>Dress Size</label>
-                            <input
-                                type="text"
-                                className='form-control'
-                                name="dressSize"
-                                value={formData.dressSize}
-                                onChange={handleChange}
-                            />
-                        </div>
+          <div className='col-md-6'>
+            <label htmlFor className="text-uppercase pb-2 pt-2">Featured Image*</label>
+            <input className='form-control custom-select' type="file" onChange={handleFeaturedImageChange} />
+          </div>
 
-                        <div  className='form-group' >
-                            <label className='form-label'>Price</label>
-                            <input
-                                type="number"
-                                name="price"
-                                className='form-control'
-                                value={formData.price}
-                                onChange={handleChange}
-                            />
-                        </div>                        
+          <div className='col-md-6'>
+            <label htmlFor className="text-uppercase pb-2 pt-2">video*</label>
+            <input className='form-control custom-select' type="file" onChange={handleVideoChange} />
+          </div>
 
-                    </div>
-                </div>
+          <div className='col-md-12'>
+            <div className='d-flex justify-content-between my-3'>
+            <label className='mt-2 pb-2 pt-2'>Add Rates</label>
+            <button style={{color: "#fff", background: "#333", borderRadius: '0px'}} className='btn  w-10' type='button' onClick={() => addSection('addRate')}>Add Stat</button>
+            </div>
+            
+                      {formData.addRate.map((rate, index) => (
+                          <div  key={index}>
 
-                {/* Add Rate Section Starts Here */}
-                <div className='card mb-5'>
-                  <div className='card-body'> 
-                    <label>Add Rates</label>
-                    {formData.addRate.map((rate, index) => (
-                        <div  key={index}>
+                              <div className='form-group'>
+                                  <label className='form-label pb-2 pt-2'>Duration</label>
+                                  <input
+                                      type="text"
+                                      placeholder="Name"
+                                      className='form-control custom-select'
+                                      value={rate.duration}
+                                      onChange={(e) => handleChange(e, index, 'addRate', 'duration')}
+                                  />
+                              </div>
+                          
+                              <div className='form-group'>
+                                  <label className='form-label pb-2 pt-2'>In Call</label>
+                                  <input
+                                      type="text"
+                                      placeholder="Value"
+                                      className='form-control custom-select'
+                                      value={rate.incall}
+                                      onChange={(e) => handleChange(e, index, 'addRate', 'incall')}
+                                  />
+                              </div>
 
-                            <div className='form-group'>
-                                <label className='form-label'>Duration</label>
-                                <input
-                                    type="text"
-                                    placeholder="Name"
-                                    className='form-control'
-                                    value={rate.duration}
-                                    onChange={(e) => handleChange(e, index, 'addRate', 'duration')}
-                                />
-                            </div>
-                        
-                            <div className='form-group'>
-                                <label className='form-label'>In Call</label>
-                                <input
-                                    type="text"
-                                    placeholder="Value"
-                                    className='form-control'
-                                    value={rate.incall}
-                                    onChange={(e) => handleChange(e, index, 'addRate', 'incall')}
-                                />
-                            </div>
+                              <div className='form-group'>
+                                  <label className='form-label pb-2 pt-2'>OutCall</label>
+                                  <input
+                                      type="text"
+                                      placeholder="Value"
+                                      className='form-control custom-select'
+                                      value={rate.outcall}
+                                      onChange={(e) => handleChange(e, index, 'addRate', 'outcall')}
+                                  />
+                              </div>
 
-                            <div className='form-group'>
-                                <label className='form-label'>OutCall</label>
-                                <input
-                                    type="text"
-                                    placeholder="Value"
-                                    className='form-control'
-                                    value={rate.outcall}
-                                    onChange={(e) => handleChange(e, index, 'addRate', 'outcall')}
-                                />
-                            </div>
+                              <hr />
+                          </div>
+                      ))}
+                      
+          </div>
+          
+          <div className='col-md-12'>
 
-                            <hr />
-                        </div>
-                    ))}
-                    <button className='btn btn-success w-10' type='button' onClick={() => addSection('addRate')}>Add Stat</button>
-                    </div>
-                </div>
-                {/* Add Rate Section Ends Here */}
-
-                
-
-                <div className='card mb-5'>
-                    <div className='card-body'>
-                        
-                        <div className='form-group'>
-                            <label className='form-label'>Featured Image</label>
-                            
-                            <input className='form-control' type="file" onChange={handleFeaturedImageChange} />
-                        </div>
-
-                        <div className='form-group'>
-                            <label className='form-label'>Video</label>
-                            <input className='form-control' type="file" onChange={handleVideoChange} />
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div className='card mb-5'>
-                  <div className='card-body'>
-                  <label >Services</label>
+              <div className='d-flex justify-content-between my-3'>
+              <label className='mt-2 pb-2 pt-2'>Services</label>
+              <button className='btn float-right'  style={{color: "#fff", background: "#333", borderRadius: '0px'}} type='button' onClick={() => addSection('services')}>Add Service</button>
+              </div>
+              
                   {formData.services.map((service, index) => (
                     <div className='form-group' key={index}>
                       <input
                         type="text"
                         placeholder="Title"
-                        className='form-control'
+                        className='form-control custom-select  pb-2 pt-2'
                         value={service.title}
                         onChange={(e) => handleChange(e, index, 'services', 'name')}
                       />
                     </div>
                   ))}
-                  <button className='btn btn-success' type='button' onClick={() => addSection('services')}>Add Service</button>
-                  </div>
+                {/* <button className='btn btn-success' type='button' onClick={() => addSection('services')}>Add Service</button> */}
+          </div>
 
+          <div className="col-md-6">
+            <label htmlFor className="text-uppercase pb-2 pt-2">upload four photos*</label>
+            {/* <input type="file" className="custom-select form-control" /> */}
+            <input 
+            type="file" 
+            className={`form-control custom-select mb-3 ${formSubmitted && selectedFiles.length === 0 ? 'border-danger' : ''}`}
 
-
-                </div>
-
-                <div className='card card-body mb-5'>
-                  
-                      <input type="file" className='form-control mb-3' accept="image/*" multiple onChange={handleFileChange} />
-                      
-
-                      <div>
-                        {images.map((image, index) => (
+            accept="image/*" 
+            multiple 
+            onChange={handleFileChange} 
+            />
+          </div>
+          <div className="row uploaded-imgs mt-4">
+          {images.map((image, index) => (
                           <img key={index} src={image} alt={`Uploaded ${index}`} style={{ width: '100px', height: '100px' }} />
                         ))}
-                      </div>
-
-                      
-
-                    
-                </div>
-                
+            
+          </div>
 
 
-                <button className='btn btn-primary w-100' type="submit">Submit</button>
-              </form>
-            </div>
+          <div>
+
+
+            <button className="custom-text-input mt-3" style={{paddingRight: 300}}>SUBMIT</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+            
           
     </Layout>
   );

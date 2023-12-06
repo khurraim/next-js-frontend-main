@@ -33,4 +33,5 @@
 }
 
 
-.border-red {border: 1px solid red;}
+.border-red {border: 1px solid red !important;}
+.border-danger {border: 1px solid red !important;}

@@ -42,25 +42,7 @@ const Dashboard = () => {
     <Admin>
       <div className='container-fluid my-5'>
         <h1 className='text-left'>Welcome to the Dashboard</h1>
-        <FontAwesomeIcon
-        icon={faSearch}
-        style={{ fontSize: 100, color: "blue" }}
-      />
-
-      <FontAwesomeIcon
-        icon={faAmbulance}
-        style={{ fontSize: 100, color: "orange" }}
-      />
-
-      <FontAwesomeIcon
-        icon={faAnchor}
-        style={{ fontSize: 100, color: "green" }}
-      />
-
-      <FontAwesomeIcon
-        icon={faFacebookF}
-        style={{ fontSize: 100, color: "green" }}
-      />
+        
 
       </div> 
     </Admin>

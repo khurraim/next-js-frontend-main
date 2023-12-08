@@ -398,7 +398,7 @@ const WorkWithUs = () => {
    formData.phone_no === '' || 
    formData.location === '' ||
    images.length === 0) ? 
-  <div className='d-flex my-3'><span style={iMarkStyle}>!</span> <p className='text-uppercase text-danger'>Please fill in all required fields</p></div> : null}
+  <div className='d-flex align-items-center my-3'><span style={iMarkStyle}>!</span> <p className='text-uppercase text-danger mt-3'>&nbsp; Please fill in all required fields</p></div> : null}
 
 
    

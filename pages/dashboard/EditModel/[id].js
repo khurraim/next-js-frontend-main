@@ -242,6 +242,7 @@ const EditModel = () => {
       formData.append('weight', model.weight);
       formData.append('height', model.height);
       formData.append('phone_no', model.phone_no);
+      formData.append('hairColor', model.hairColor);
       
       // Append featured image only if a new image is selected
       if (imageFile) {
@@ -376,6 +377,16 @@ const EditModel = () => {
             </div>
 
             <div className='form-group'>
+              <label className='form-label'>Hair Color: </label>
+              <input
+                name="weight"
+                value={model.hairColor || ''}
+                className='form-control'
+                onChange={(e) => handleChange(e, 'hairColor')}
+              />
+            </div>
+
+            <div className='form-group'>
               <label className='form-label'>Height</label>
               <input
                 name="height"
@@ -457,6 +468,8 @@ const EditModel = () => {
               <input className='form-control' type="file" onChange={handleVideoChange} />
             </div>
 
+            {model.video && (
+              <>
             Current Video :
             <video width="320" height="240" controls>
               <source
@@ -464,7 +477,8 @@ const EditModel = () => {
               type="video/mp4"
               />
                         Your browser does not support the video tag.
-            </video>
+            </video></>
+            )}
           </div>
 
           <div className='card card-body'>
@@ -659,9 +673,9 @@ const EditModel = () => {
                   gallery.map((imageData) => (
                     <div key={imageData.id} >
                       <img
-                        src={`http://127.0.0.1:8000/storage/${imageData.image}`}
+                        src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${imageData.image}`}
                         alt={`Image ${imageData.id}`}
-                        style={{ width: '200px', height: '200px', margin: '5px' }}
+                        style={{ width: '200px', height: 'auto', margin: '5px' }}
                       />
                       <button className='btn btn-danger' type='button' onClick={() => handleDeleteImage(imageData.id)}>Delete</button>
                     </div>

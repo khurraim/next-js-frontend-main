@@ -14,7 +14,7 @@ const YourComponentTable = () => {
   useEffect(() => {
     // Fetch records when the component mounts
     axios
-      .get(`${process.env.NEXT_PUBLIC_API_URL}/ModelsByAdmin`) // Replace with your API endpoint
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/ModelsByUsers`) // Replace with your API endpoint
       .then((response) => {
         setRecords(response.data);
         setLoading(false);
@@ -96,7 +96,7 @@ const YourComponentTable = () => {
   return (
     <Admin>
       <div className="container-fluid my-5">
-        
+        <h2>Work Requests</h2>
         {loading ? (
           <p>Loading records...</p>
         ) : records.length === 0 ? (
@@ -106,17 +106,23 @@ const YourComponentTable = () => {
           <table className="table table-bordered ">
             <thead>
               <tr>
-               
-                {/* <th>Video</th> */}
-                <th>Title</th>
+                
+                
+              
+                <th>Name</th>
+                
                 
                 <th>Nationality</th>
                 
+                
                 <th>Age</th>
-                <th>Phone No </th>
+
+                <th>Phone Number</th>
+                
                 <th>View Details</th>
-                <th>Edit Models</th>
+                <th>Edit Model</th>
                 <th>Delete Model</th>
+                
 
               </tr>
             </thead>
@@ -124,34 +130,34 @@ const YourComponentTable = () => {
               {records.map((record) => (
                 <tr key={record.id}>
                   
-                 
-                  <td>{record.title}</td>
-                 
-                  <td>{record.nationality}</td>
                   
+                  
+                  <td>{record.title}</td>
+                  <td>{record.nationality}</td>
                   <td>{record.age}</td>
-
                   <td>{record.phone_no}</td>
-                
-                 <td>
-                    <Link href={`/dashboard/ViewDetails/${record.id}`} className="btn btn-success w-100 mb-3">
+
+                  <td>
+                    <Link href={`/dashboard/ViewDetails/${record.id}`} className="btn btn-large btn-success w-100 mt-3 mb-3">
                         View Details
                     </Link>
-                 </td>
-                  
+                  </td>
+                 
                   <td>
-                    <Link href={`/dashboard/EditModel/${record.id}`} className="btn btn-primary w-100 mb-3">
+                    <Link href={`/dashboard/EditModel/${record.id}`} className="btn btn-large btn-primary w-100  mt-3  mb-3">
                         Edit Model
                     </Link>
                   </td>
+                  
                   <td>
                     <button
-                      className="btn btn-danger w-100 mb-3"
+                      className="btn btn-large btn-danger w-100 mb-3 mt-3"
                       onClick={() => handleDelete(record.id)}
                     >
                       Delete Model
                     </button>
                   </td>
+
                 </tr>
               ))}
             </tbody>

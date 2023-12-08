@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: 'Anton-Regular';
   src: url('../fonts/Anton-Regular.ttf') format('truetype');
   font-weight: normal;
@@ -72,7 +72,7 @@ html,body {
 }
 
 
-/* Style for the container */
+
 .box-container {
   display: flex;
   justify-content: space-between;
@@ -80,20 +80,20 @@ html,body {
   margin-top: 80px;
 }
 
-/* Style for the small square box */
+
 .small-box {
   width: 16px;
-  /* Adjust the width as needed */
+  
   height: 16px;
-  /* Adjust the height as needed */
+  
   border: 1px solid #fff;
   box-sizing: border-box;
 }
 
-/* Style for the filled box */
+
 .filled-box {
   background-color: #fff;
-  /* Adjust the background color as needed */
+  
 }
 
 .custom-text-input {
@@ -320,4 +320,348 @@ html,body {
   font-weight: 900;
   margin-right: 15px;
   margin-left: 15px;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+:root {
+	--fb-primary-color: #F33;
+	--fb-white-color: #ffffff;
+	--fb-black-color: #000000;
+	--fb-gray-color: #362E2C;
+  --fb-lightWhite-color: #DBD2B1;
+  
+}
+body{
+	font-family: 'Anton', sans-serif;
+}
+
+body,
+a,
+button,
+.btn-brand,
+.header-icon-box,
+.header-icon-box .header-icon {
+	-webkit-transition: all 400ms ease, outline 0ms;
+	-moz-transition: all 400ms ease, outline 0ms;
+	-ms-transition: all 400ms ease, outline 0ms;
+	-o-transition: all 400ms ease, outline 0ms;
+	transition: all 400ms ease, outline 0ms;
+}
+.btn-brand{
+	padding: 0.66rem 1.3rem;
+	background-color: var(--fb-primary-color);
+	color: var(--fb-white-color);
+	border: 1px solid var(--fb-primary-color);
+	border-radius: 5px;
+	text-align: center;
+	text-transform: uppercase;
+	text-wrap:nowrap;
+}
+.btn-brand:hover{
+	background-color: #F2E7DC;
+	color: var(--fb-primary-color);
+	border: 1px solid var(--fb-primary-color);
+}
+.btn-brand-outline{
+  padding: 0.66rem 1.3rem;
+  background-color: #F2E7DC;
+  color: var(--fb-primary-color);
+  border: 1px solid var(--fb-primary-color);
+  border-radius: 5px!important;
+  text-align: center;
+  text-transform: uppercase;
+  text-wrap:nowrap;
+}
+.btn-brand-outline:hover{
+  background-color: var(--fb-primary-color);
+  color: var(--fb-white-color);
+  border: 1px solid var(--fb-primary-color);
+}
+.btn-brand-outline2{
+  padding: 0.66rem 1.3rem;
+  background-color: transparent;
+  color: var(--fb-white-color);
+  border: 1px solid var(--fb-lightWhite-color);
+  border-radius: 5px!important;
+  text-align: center;
+  text-transform: uppercase;
+  text-wrap:nowrap;
+}
+/*.btn-brand-outline:hover{
+  background-color: var(--fb-primary-color);
+  color: var(--fb-white-color);
+  border: 1px solid var(--fb-primary-color);
+}*/
+.form-control:focus , .accordion-button:focus{
+  box-shadow: none;
+  outline: none;
+}
+.main-heading{
+	font-family: 'Castoro', serif;
+  font-size: 60px;
+font-style: normal;
+font-weight: 400;
+line-height: 72px;
+}
+
+
+.home-menu{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+}
+.header .nav-inner{
+display: flex;
+justify-content: space-between;
+align-content: center;
+width: 100%;
+}
+.header .nav-link{
+  color: #FFF;
+font-size: 22px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 1.024px;
+text-transform: uppercase;
+}
+.header .nav-item{
+  margin: 0 5px;
+}
+.header .navbar-toggler{
+  color: var(--fb-white-color);
+}
+
+
+.header .navbar-brand {
+    margin-right: 18%;
+}
+
+.header .navbar-brand {
+   color: #FFF;
+  font-size: 48.112px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110.5%; 
+  letter-spacing: 2.165px;
+  text-align: center;
+}
+
+
+.header .navbar-brand  span{
+  display: block;
+  color: var(--fb-primary-color);
+
+}
+
+
+
+
+/*main banner*/
+.main-banner img{
+  height: 100vh;
+  object-fit: cover;
+}
+
+.main-banner .carousel-caption {
+    position: absolute;
+    right: unset;
+    bottom: unset;
+    left: 10%;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #fff;
+    text-align: left;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.main-banner .carousel-caption h5{
+    margin-bottom: 17rem;
+    color: #FFF;
+    leading-trim: both;
+    text-edge: cap;
+    font-size: 78.976px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110.5%; 
+    letter-spacing: 3.554px;
+    text-transform: uppercase;
+}
+.main-banner .carousel-caption h5 span{
+  color: var(--fb-primary-color);
+  display: block;
+}
+.main-banner  .enter{
+  margin-top: 45px;
+    width: 350px;
+    height: 60px;
+    background: #000;
+    display: block;
+    color: #FFF;
+    text-decoration: none;
+    padding: 7px 20px;
+    font-size: 31.301px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.409px;
+    text-transform: uppercase;
+}
+.main-banner  .enter:hover{
+  background-color: var(--fb-primary-color);
+}
+.carousel-indicators{
+  position: absolute;
+    right: unset;
+    bottom: unset;
+    left: 10%;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #fff;
+    text-align: left;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 50px 0 0 0; 
+    display: block;
+}
+
+.main-banner  .carousel-indicators button{
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  border:4px solid var(--fb-white-color);
+  opacity: 1;
+}
+.main-banner  .carousel-indicators button.active{
+  background-color: var(--fb-white-color);
+}
+
+
+.footer{
+  color: #FFF;
+  leading-trim: both;
+  font-size: 21.144px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.951px;
+  text-transform: uppercase;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.footer .footer-inner{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-footer {
+  position: absolute;
+  bottom: 0;
+}
+
+
+
+
+
+
+
+@media all and (min-width: 1440px) {
+
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,  
+    .container-xl {
+        max-width: 1420px;
+    }
+       
+}
+
+@media all and (min-width: 1600px) {
+
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 1580px;
+    }
+
+ 
+}
+
+@media all and (min-width: 1920px) {
+    html {
+        font-size: 18px;
+    }
+
+    .container,
+    .container-sm,
+    .container-md,
+    .container-lg,
+    .container-xl {
+        max-width: 1900px;
+    }
+}
+
+@media all  and (max-width:992px){
+  .header .nav-inner{
+    display: block;
+  }
+  .header .navbar-brand{
+    font-size: 25px;
+    margin: 0;
+  }
+  .header .nav-inner{
+    background: rgba(17, 16, 16, 0.55);
+    border-radius: 5px;
+    padding: 10px;
+  }
+  .main-banner .carousel-caption ,
+  .main-banner .carousel-indicators{
+    left: 2%;
+  }
+  .main-banner .enter{
+    width: 320px;
+  }
+  .home-footer h5 {
+    font-size: 14px;
+}
+ .home-footer img {
+    width: 120px;
+}
+.footer .footer-inner{
+  flex-wrap: wrap;
+}
+
+}
+
+
+
+@media all and (max-width:1650px){
+  .main-banner . .enter{
+      margin-top: 60px;
+        max-width: 300px;
+        height: 50px;
+        font-size: 20px;
+        padding: 10px 20px;
+  }
+  .main-banner .carousel-caption h5{
+    font-size: 50px;
+  }
+  .main-banner .carousel-indicators button{
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+  }
+  .carousel-indicators{
+    margin: 30px 0 0 0;
+  }
+  .home-menu .nav-link{
+    font-size: 16px;
+}
+
 }

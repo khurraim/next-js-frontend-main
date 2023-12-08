@@ -11,7 +11,7 @@ const links = [
   //{ label: 'View All Models', url: '/dashboard/ViewModels' },
   { label: 'Create Model', url: '/dashboard/CreateModel' },
   { label: 'View Admin Model', url: '/dashboard/ViewAllAdminModels' },
-  { label: 'View User Model', url: '/dashboard/ViewAllUserModels' },
+  //{ label: 'View User Model', url: '/dashboard/ViewAllUserModels' },
 ];
 
 const pagesLink = [
@@ -180,6 +180,8 @@ const Admin = ({ children }) => {
               </li>
 
               <NavbarDropdown title="Models" links={links} />
+
+              <Link className='nav-link' href='/dashboard/WorkRequests'>Work Requests</Link>
               
               <li className='nav-divider text-white'>
                 Pages & Menus

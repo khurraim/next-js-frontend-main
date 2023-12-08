@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from 'axios';
 
-const Footer = () => {
+const FooterBK = () => {
     const [menus, setMenus] = useState([]);
     const [pages, setPages] = useState({});
 
@@ -36,26 +36,28 @@ const Footer = () => {
     }, []);
 
     return (
-        <footer className="footer home-footer" style={{zIndex: '1'}}>
-            <div className="container-fluid px-lg-5">
-                <div className="footer-inner">
-                    <div ><h5>Good Girls Gone Bad © 2023</h5></div>
-                    <div ><img className="img-fluid" src="/images/payment.png"/></div>
-                    
-                    <div className="text-white d-flex">
-                        {menus.map((menu) => (
-                            <h5>
-                                <Link className="text-white text-decoration-none mx-2" href={`/${pages[menu.page_id]?.replace(/\s/g, '')}`}>
-                                    {menu.title}
-                                </Link>
-                            </h5>
-                        ))}
-                    </div>
-                </div>
+        <footer className="custom-footer-second pb-5" style={{zIndex: '100', position: 'relative', marginTop: '-75px'}}>
+            <div className="row">
+                <div className="col-md-4 text-white" style={{fontFamily: 'Anton-Regular'}}>Good Girls Gone Bad © 2023</div>
+                <div className="col-md-4 text-center payment-cards">
                 
+                <img src="/images/payment-dark.png" alt />
+                </div>
+                <div className="col-md-4">
+                <div className="text-end text-white" style={{fontFamily: 'Anton-Regular'}}>
+                    {/* terms &amp; conditions */}
+                    {menus.map((menu) => (
+                    
+                        <Link style={{textDecoration: 'none', color: '#fff', margin: 'auto 5px'}} href={`/${pages[menu.page_id]?.replace(/\s/g, '')}`}>
+                            {menu.title}
+                        </Link>
+                    
+                    ))}
+                </div>
+                </div>
             </div>
-	    </footer>
+        </footer>
     );
 }
 
-export default Footer;
+export default FooterBK;

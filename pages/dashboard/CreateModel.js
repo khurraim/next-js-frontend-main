@@ -20,7 +20,8 @@ const NewComponent = () => {
     services: [{ name: ''}],
     weight: '',
     height: '',
-    phone_no: ''
+    phone_no: '',
+    hairColor: ''
   });
 
   const [loading, setLoading] = useState(true);
@@ -202,7 +203,8 @@ const NewComponent = () => {
         services: [{ name: ''}],
         weight: '',
         height: '',
-        phone_no: ''
+        phone_no: '',
+        hairColor: ''
       });
       toast.success("Model Created Successfully");
     } catch (error) {
@@ -323,6 +325,17 @@ const NewComponent = () => {
                                 name="price"
                                 className='form-control'
                                 value={formData.price}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div  className='form-group' >
+                            <label className='form-label'>Hair Color</label>
+                            <input
+                                type="number"
+                                name="hairColor"
+                                className='form-control'
+                                value={formData.hairColor}
                                 onChange={handleChange}
                             />
                         </div>                        

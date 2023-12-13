@@ -99,7 +99,7 @@ function Contact() {
 <>
 
   <NewHeader/>
-	<main className="main-wrapper innrerPages-waper">
+	<main className="main-wrapper innrerPages-waper" style={{fontFamily: 'Anton'}}>
   <div className="container-lg inner-product" style={{maxWidth: '1900px'}}>
     <div className="row px-lg-5">
       <div className="col-lg-7 mx-auto">

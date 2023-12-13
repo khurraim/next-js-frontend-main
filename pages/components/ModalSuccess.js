@@ -20,27 +20,17 @@ const ModalSuccess = ({  onClose }) => {
 
   return (
   
-    <div className='custom-modal ' >
-      
-      <div className='modal-content p-5' style={{width: '25%'}}>
-      
-       
-
-      
-        <h1 className='text-uppercase'>Profile Sent</h1>
-        <p className='text-uppercase'>
-            thanks for submitting your application. we will contact you in a week if you are successful.
-        </p>
-
-        <button style={ButtonStyle} onClick={onClose}>Close</button>
-          
-        
-        
-          
-        
-
+    <div style={{background: 'rgba(0,0,0,0.5)'}} className="modal d-block contact-us-modal show" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-modal="true" role="dialog" >
+  <div className="modal-dialog modal-dialog-centered">
+    <div className="modal-content">
+      <div className="modal-body">
+        <h1>message Sent</h1>
+        <button type="button" onClick={onClose} className="enter" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
+  </div>
+</div>
+
   
 )};
 

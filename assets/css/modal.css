@@ -1,4 +1,4 @@
-.custom-modal {
+/* .custom-modal {
   display: block !important;
   position: fixed;
   z-index: 1;
@@ -30,8 +30,11 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
-}
+} */
 
-
-.border-red {border: 1px solid red !important;}
+/** Not Related to Modal **/
+.border-red {border: 2px solid red !important;}
 .border-danger {border: 1px solid red !important;}
+.form-check-input:checked {
+  background-color: #F33 !important;
+}

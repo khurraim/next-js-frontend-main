@@ -87,11 +87,13 @@ const ViewMenu = () => {
                                 <td>
                                     {/* Create a link with the formatted URL */}
                                     <a
-                                        href={`http://localhost:3000/${pages[menu.page_id]?.replace(/\s/g, '')}`}
+                                        href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${pages[menu.page_id]?.replace(/\s/g, '')}`}
                                         target="_blank"
+                                        className="btn btn-success"
                                         rel="noopener noreferrer"
                                     >
-                                        {pages[menu.page_id]?.replace(/\s/g, '')}
+                                        {/* {pages[menu.page_id]?.replace(/\s/g, '')} */}
+                                        View Page
                                     </a>
                                 </td>
                                 <td>

@@ -12,6 +12,7 @@ import '@/assets/css/style.css';
 import '@/assets/css/modal.css';
 
 
+
 // import Font Awesome CSS
 import "@fortawesome/fontawesome-svg-core/styles.css"; 
 

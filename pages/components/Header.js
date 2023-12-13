@@ -322,7 +322,7 @@ const Header = () => {
  								<Link class="nav-link" href="/WorkWithUs">work with us</Link>
  							</li>
  							<li class="nav-item">
- 								<Link class="nav-link" href="/faq">faq</Link>
+ 								<Link class="nav-link" href="/faq">faqs</Link>
  							</li>
                                 {menus.map(menu => (
                                     <li className="nav-item" key={menu.id}>

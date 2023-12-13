@@ -227,7 +227,7 @@ const ViewDetails = () => {
 
                     <h3>Rates : </h3>
                    
-                    {rates.length > 0 ? (
+                    {/* {rates.length > 0 ? (
                         <>
                         <b>Duration: </b>{rates[0].duration} <br/>
                         <b>Incall: </b>{rates[0].incall} <br/>
@@ -235,7 +235,21 @@ const ViewDetails = () => {
                         </>
                     ) : (
                         <span className="empty-value">No rates available</span>
+                    )} */}
+
+                    {rates.length > 0 ? (
+                      rates.map((rate) => (
+                        <div key={rate.id}>
+                          <b>Duration: </b>{rate.duration} <br/>
+                          <b>Incall: </b>{rate.incall} <br/>
+                          <b>Outcall: </b>{rate.outcall} <br/>
+                          <br />
+                        </div>
+                      ))
+                    ) : (
+                      <span className="empty-value">No rates available</span>
                     )}
+
 
                     <hr />
 

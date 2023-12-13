@@ -364,7 +364,7 @@ const NewComponent = () => {
                             <div className='form-group'>
                                 <label className='form-label'>In Call</label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     placeholder="Value"
                                     className='form-control'
                                     value={rate.incall}
@@ -375,7 +375,7 @@ const NewComponent = () => {
                             <div className='form-group'>
                                 <label className='form-label'>OutCall</label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     placeholder="Value"
                                     className='form-control'
                                     value={rate.outcall}

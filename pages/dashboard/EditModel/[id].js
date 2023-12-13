@@ -495,7 +495,7 @@ const EditModel = () => {
 
                   />
                   <input
-                      type='text'
+                      type='number'
                       placeholder='Incall'
                       className='form-control mb-3'
                       name='incall'
@@ -504,7 +504,7 @@ const EditModel = () => {
 
                   />
                   <input
-                      type='text'
+                      type='number'
                       placeholder='Outcall'
                       className='form-control mb-3'
                       name='outcall'
@@ -555,7 +555,7 @@ const EditModel = () => {
                     })}
                 />
                 <input
-                  type='text'
+                  type='number'
                   placeholder='Incall'
                   className='form-control'
                   name='incall'
@@ -569,7 +569,7 @@ const EditModel = () => {
                 />
 
                 <input
-                  type='text'
+                  type='number'
                   placeholder='Outcall'
                   className='form-control'
                   name='outcall'
@@ -657,7 +657,7 @@ const EditModel = () => {
 
           <div className='card card-body'>
 
-            <div className='card-head text-left'>Uplaod New Images : </div>
+            <div className='card-head text-left'>Upload New Images : </div>
             
             <input type="file" className='form-control mb-3' accept="image/*" multiple onChange={handleFileChange} />
             <div>

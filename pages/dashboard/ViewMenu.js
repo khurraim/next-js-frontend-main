@@ -19,7 +19,7 @@ const ViewMenu = () => {
 
                 // Fetch page titles for all unique page IDs
                 pageIds.forEach(pageId => {
-                    axios.get(`http://127.0.0.1:8000/api/pages/${pageId}`)
+                    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/pages/${pageId}`)
                         .then((pageResponse) => {
                             // Store page titles in the 'pages' state using page ID as the key
                             setPages(prevPages => ({
@@ -85,13 +85,15 @@ const ViewMenu = () => {
                                 <td>{pages[menu.page_id]}</td>
                                 <td>
                                     {/* Create a link with the formatted URL */}
-                                    <a
-                                        href={`http://localhost:3000/${pages[menu.page_id]?.replace(/\s/g, '')}`}
+                                    <Link
+                                        href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${pages[menu.title]?.replace(/\s/g, '')}`}
                                         target="_blank"
+                                        className="btn btn-success"
                                         rel="noopener noreferrer"
                                     >
-                                        {pages[menu.page_id]?.replace(/\s/g, '')}
-                                    </a>
+                                        {/* {pages[menu.page_id]?.replace(/\s/g, '')} */}
+                                        View Page
+                                    </Link>
                                 </td>
                                 <td>
                                     <Link href={`/dashboard/EditMenu/${menu.id}`} className="btn btn-primary mx-3">

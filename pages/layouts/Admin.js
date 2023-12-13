@@ -217,7 +217,7 @@ const Admin = ({ children }) => {
               </li>
 
               <NavbarDropdown title="Footer Menu" links={footerMenu} />
-              <NavbarDropdown title="Footer Content" links={footerContent} />
+              {/* <NavbarDropdown title="Footer Content" links={footerContent} /> */}
 
               
 

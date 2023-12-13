@@ -9,7 +9,7 @@ import NewFooter from "./components/NewFooter";
 import { formatDistanceToNow } from 'date-fns';
 
 
-const Products = () => {
+const products = () => {
 
     const [modelsData, setModelsData] = useState([]);
     const [selectedFilters, setSelectedFilters] = useState([]);
@@ -474,4 +474,4 @@ const handleCheckboxClick = (category, value) => {
     )
 }
 
-export default Products;
+export default products;

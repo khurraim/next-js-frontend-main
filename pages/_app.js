@@ -1,4 +1,5 @@
 // Frontend Template Dependencies
+
 import '@/assets/css/font.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 //import '@/styles/globals.css'
@@ -9,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-
+import '@/assets/css/fontsIcon.css';
 import '@/assets/css/style.css';
 import '@/assets/css/modal.css';
 

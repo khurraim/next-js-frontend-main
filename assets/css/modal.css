@@ -35,9 +35,9 @@
 /** Not Related to Modal **/
 .border-red {border: 2px solid red !important;}
 .border-danger {border: 1px solid red !important;}
-.form-check-input:checked {
+/* .form-check-input:checked {
   background-color: #F33 !important;
-}
+} */
 
 html,body {
   font-family: 'Anton' !important;

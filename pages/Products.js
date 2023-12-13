@@ -420,7 +420,7 @@ const handleCheckboxClick = (category, value) => {
           </div>
         </div>
       </div>
-      <div className="row px-4 gx-lg-5">
+      <div className="row ">
         
         {modelsData.length === 0 ? (
             <p>No models found.</p>

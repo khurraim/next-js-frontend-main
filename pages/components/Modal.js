@@ -114,13 +114,13 @@ const Modal = ({ id, onClose }) => {
                   </div>
                   <div className="product-card-body">
 
-                    <div>
+                    {/* <div>
                       <h5>natalie dior</h5>
                       <h6>westminster, london</h6>
                       <p>
                         <span>incall £XXX</span> <span>Outcall £XXX</span>
                       </p>
-                    </div>
+                    </div> */}
 
                     {model && (
                       <>
@@ -263,7 +263,7 @@ const Modal = ({ id, onClose }) => {
                 </p>
               </div>
             </div>
-            <div className="row">
+            <div className="row girlImageGallery">
              
               {galleryImages.map(image => (
                <div className="col-lg-4">

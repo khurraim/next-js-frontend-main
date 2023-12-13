@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 :root {
 	--fb-primary-color: #F33;
@@ -323,7 +324,7 @@ margin: auto;
 }*/
 .products-sec .dropdown-check-list ul.items {
   padding: 2px;
-  /* display: none; */
+  display: none;
   margin: 0;
   border: 2px solid #000;
   border-top: none;
@@ -356,7 +357,7 @@ margin: auto;
 }
 .products-sec .dropdown-check-list2 ul.items2 {
   padding: 2px;
-  /* display: none; */
+  display: none;
   margin: 0;
   border: 2px solid #000;
   border-top: none;
@@ -394,14 +395,14 @@ margin: auto;
 }
 
 .products-sec .selectBox .dropdown-menu {
-  opacity: 1;
+  opacity: 0;
   display: block;
   top: 100%;
   width: calc(100% + 4px);
   max-height: 250px;
-  z-index: 2; /*Khurraim Change this from -1 to 2*/
+  z-index: -1;
   overflow-y: auto;
-  /* visibility: hidden; */
+  visibility: hidden;
   border:2px solid var(--fb-black-color);
   border-radius: 0;
   left: -2px;
@@ -503,7 +504,7 @@ text-underline-position: under;
 
 .product-card{
   background-color: var(--fb-primary-color);
-  margin-top: 90px;
+  margin: 90px 10px 0px 10px;
   display: block;
   text-decoration: none;
 }
@@ -525,9 +526,29 @@ text-underline-position: under;
 .product-card .product-card-body{
   margin-top: -45px;
   padding:0 10px 0px 10px;
+}
+  .infoGirl-modal .product-card .product-card-body{
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+}
+.infoGirl-modal .product-card .img-wraper video{
+   width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.infoGirl-modal .owl-dots{
+  text-align: center;
+}
+.infoGirl-modal .owl-dots button{
+  background-color: lightgray;
+  width: 25px;
+  height: 6px;
+  margin:0 5px ;
+}
+.infoGirl-modal .owl-dots .active{
+  background-color: var(--fb-primary-color);
 }
 .product-card .product-card-body a{
   color: var(--fb-white-color);

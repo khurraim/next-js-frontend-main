@@ -21,7 +21,8 @@ const NewComponent = () => {
     weight: '',
     height: '',
     phone_no: '',
-    hairColor: ''
+    hairColor: '',
+    bookLink: ''
   });
 
   const [loading, setLoading] = useState(true);
@@ -174,6 +175,12 @@ const NewComponent = () => {
         formDataToSend.append('video', formData.video);
       }
 
+      
+
+      if(formData.bookLink) {
+        formDataToSend.append('bookLink', formData.bookLink);
+      }
+
       // Appending Gallery Files
       selectedFiles.forEach((file) => {
         formDataToSend.append('images[]', file);
@@ -204,7 +211,8 @@ const NewComponent = () => {
         weight: '',
         height: '',
         phone_no: '',
-        hairColor: ''
+        hairColor: '',
+        bookLink: ''
       });
       toast.success("Model Created Successfully");
     } catch (error) {
@@ -332,10 +340,21 @@ const NewComponent = () => {
                         <div  className='form-group' >
                             <label className='form-label'>Hair Color</label>
                             <input
-                                type="number"
+                                type="text"
                                 name="hairColor"
                                 className='form-control'
                                 value={formData.hairColor}
+                                onChange={handleChange}
+                            />
+                        </div> 
+
+                        <div  className='form-group' >
+                            <label className='form-label'>Book Link</label>
+                            <input
+                                type="text"
+                                name="bookLink"
+                                className='form-control'
+                                value={formData.bookLink}
                                 onChange={handleChange}
                             />
                         </div>                        

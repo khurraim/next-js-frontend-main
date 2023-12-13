@@ -6,6 +6,9 @@ import NewHeader from "./components/NewHeader";
 import Modal from "./components/Modal";
 import NewFooter from "./components/NewFooter";
 
+import { formatDistanceToNow } from 'date-fns';
+
+
 const Products = () => {
 
     const [modelsData, setModelsData] = useState([]);
@@ -121,7 +124,7 @@ axios.get(`${process.env.NEXT_PUBLIC_API_URL}/get-filtered-models`)
   setModelsData(response.data);
 })
 .catch((error)=>{console.log("Error fetching models : ",error)});
-},[]);
+},[selectedAges, selectedNationalities, selectedDressSizes, selectedSubLocation, selectedIncalls, selectedOutcall]);
 
 useEffect(()=>{
   // Fetch services for each model
@@ -258,7 +261,12 @@ const handleCheckboxClick = (category, value) => {
 
     axios.get(apiUrl, { params: filters })
       .then((response) => {
-        setModelsData(response.data);
+        //setModelsData(response.data);
+        if (response.data.length === 0) {
+          setModelsData([]); // Set to an empty array when no models are found
+        } else {
+          setModelsData(response.data);
+        }
       })
       .catch((error) => {
         console.log('Error fetching models:', error);
@@ -273,6 +281,13 @@ const handleCheckboxClick = (category, value) => {
   const closeModal = () => {
     setShowModal(false);
   }
+
+  const isNewModel = (createdAt) => {
+    const oneMonthAgo = new Date();
+    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+    return new Date(createdAt) > oneMonthAgo;
+  };
+
 
     return (
 
@@ -400,46 +415,17 @@ const handleCheckboxClick = (category, value) => {
               <button className="btn-dark-outline py-2 px-5 "><span className="px-4">Show Girls</span></button>
             </div>
 
-            
-            {/* <div className="filter-contant col-12">
-              <h5><span>characteristics</span> ‘22’,’24’, ‘brazilian’, ‘spanish’</h5>
-              <h5><span>price (hourly outcall)</span> ‘400’</h5>
-              <h5><span>price (hourly outcall)</span> ‘400’</h5>
-              <h5><span>location</span> ‘euston’, ‘st albans’, ‘watford’, ‘westminster’, ‘uxbridge’ Girls </h5>
-              <h5 />
-            </div> */}
+          
 
           </div>
         </div>
       </div>
       <div className="row px-4 gx-lg-5">
-        {/* <div className="col-lg-5-1 col-md-6">
-          <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" className="product-card">
-            <div className="img-wraper">
-              <img className="img-fluid" src="assets/images/HOMEPAGE_BOTTOM_LEFT 1.png" />
-              <div className="img-bage"><span>new girl</span></div>
-            </div>
-            <div className="product-card-body">
-              <h5>natalie dior</h5>
-              <h6>westminster, london</h6>
-              <p><span>incall £XXX</span> <span>Outcall £XXX</span></p>
-            </div>
-          </a>
-        </div>
-        <div className="col-lg-5-1 col-md-6">
-          <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" className="product-card">
-            <div className="img-wraper">
-              <img className="img-fluid" src="assets/images/girs (1).jpg" />
-              <div className="img-bage"><span>new girl</span></div>
-            </div>
-            <div className="product-card-body">
-              <h5>natalie dior</h5>
-              <h6>westminster, london</h6>
-              <p><span>incall £XXX</span> <span>Outcall £XXX</span></p>
-            </div>
-          </a>
-        </div> */}
-        {modelsData.map((model) => {
+        
+        {modelsData.length === 0 ? (
+            <p>No models found.</p>
+          ) : (
+        modelsData.map((model) => {
               const modelRates = rates[model.id];
 
             return (
@@ -447,7 +433,8 @@ const handleCheckboxClick = (category, value) => {
             <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" className="product-card">
               <div className="img-wraper">
                 <img className="img-fluid" src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model.featuredImage}`} />
-                <div className="img-bage"><span>new girl</span></div>
+                {/* <div className="img-bage"><span>new girl</span></div> */}
+                {isNewModel(model.created_at) && <div className="img-bage"><span>new girl</span></div>}
               </div>
               <div className="product-card-body">
                 <h5>{model.title}</h5>
@@ -465,7 +452,9 @@ const handleCheckboxClick = (category, value) => {
               </div>
             </a>
             </div>
-          )})}
+          )})
+
+          )}
       </div>
     </div>
   </section>

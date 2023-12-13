@@ -7,6 +7,8 @@ import NewHeader from './components/NewHeader';
 import NewFooter from './components/NewFooter';
 import ModalSuccess from './components/ModalSuccess';
 
+import Head from 'next/head';
+
 function Contact() {
   const [contact, setContact] = useState({
     name: '',
@@ -81,18 +83,6 @@ function Contact() {
     setValidationErrors({ ...validationErrors, [name]: false });
   };
 
-  // const validateFields = (data) => {
-  //   const errors = {};
-  //   Object.keys(data).forEach((key) => {
-  //     if (!data[key]) {
-  //       errors[key] = true;
-  //     } else {
-  //       errors[key] = false;
-  //     }
-  //   });
-  //   return errors;
-  // };
-
   const validateFields = (data) => {
     const errors = {};
     Object.keys(data).forEach((key) => {
@@ -110,7 +100,7 @@ function Contact() {
 
   <NewHeader/>
 	<main className="main-wrapper innrerPages-waper">
-  <div className="container-lg inner-product">
+  <div className="container-lg inner-product" style={{maxWidth: '1900px'}}>
     <div className="row px-lg-5">
       <div className="col-lg-7 mx-auto">
         <div href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" className="product-card">

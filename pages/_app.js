@@ -1,5 +1,5 @@
 // Frontend Template Dependencies
-
+import '@/assets/css/font.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 //import '@/styles/globals.css'
 //import '@/styles/Header.css'

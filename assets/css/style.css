@@ -324,7 +324,7 @@ margin: auto;
 }*/
 .products-sec .dropdown-check-list ul.items {
   padding: 2px;
-  display: none;
+  /* display: none; */
   margin: 0;
   border: 2px solid #000;
   border-top: none;
@@ -357,7 +357,7 @@ margin: auto;
 }
 .products-sec .dropdown-check-list2 ul.items2 {
   padding: 2px;
-  display: none;
+  /* display: none; */
   margin: 0;
   border: 2px solid #000;
   border-top: none;
@@ -395,14 +395,14 @@ margin: auto;
 }
 
 .products-sec .selectBox .dropdown-menu {
-  opacity: 0;
+  /* opacity: 0; */
   display: block;
   top: 100%;
   width: calc(100% + 4px);
   max-height: 250px;
-  z-index: -1;
+  z-index: 2; /** -1 to 2**/
   overflow-y: auto;
-  visibility: hidden;
+  /* visibility: hidden; */
   border:2px solid var(--fb-black-color);
   border-radius: 0;
   left: -2px;

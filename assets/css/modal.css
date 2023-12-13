@@ -40,5 +40,5 @@
 }
 
 html,body {
-  font-family: 'Anton';
+  font-family: 'Anton' !important;
 }

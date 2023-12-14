@@ -15,6 +15,8 @@ const products = () => {
     const [selectedFilters, setSelectedFilters] = useState([]);
     const [showModal, setShowModal] = useState(false);
 
+    const [filtersApplied, setFiltersApplied] = useState(false);
+
     const [rates, setRates] = useState({});
 
   const [isCharacteristicsVisible, setIsCharacteristicsVisible] = useState(false);
@@ -210,6 +212,8 @@ const handleCheckboxClick = (category, value) => {
     const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/get-filtered-models`;
 
     const filters = {};
+
+    setFiltersApplied(true);
 
     if (selectedAges.length > 0) {
       filters.age = selectedAges.join(',');
@@ -414,6 +418,17 @@ const handleCheckboxClick = (category, value) => {
             <div className="text-center mt-5" onClick={handleShowGirls}>
               <button className="btn-dark-outline py-2 px-5 "><span className="px-4">Show Girls</span></button>
             </div>
+
+            {filtersApplied && (
+              <div class="filter-contant col-12">
+								<h5><span>characteristics</span> ‘{selectedAges.join(',')}’,‘{selectedDressSizes.join(',')}’, ‘{selectedNationalities.join(',')}’</h5>
+								<h5><span>price (hourly incall)</span> ‘{selectedIncalls}’</h5>
+								<h5><span>price (hourly outcall)</span> {selectedOutcall}</h5>
+                <h5><span>location</span> ‘{selectedSubLocation.join("‘,’")}’ </h5>
+								<h5></h5>
+						  </div>
+            )}
+            
 
           
 

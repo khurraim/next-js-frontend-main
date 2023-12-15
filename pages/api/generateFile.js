@@ -7,7 +7,8 @@ export default async (req, res) => {
     const { title, description } = req.body;
     
     try {
-      const checkTitle = await axios.get(`http://127.0.0.1:8000/api/pages/checkTitle/${title}`);
+      //const checkTitle = await axios.get(`http://127.0.0.1:8000/api/pages/checkTitle/${title}`);
+      const checkTitle = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/pages/checkTitle/${title}`);
       if (checkTitle.data.message === 'Page title already exists') {
         return res.status(409).json({ error: 'Page title already exists in the database' });
       }
@@ -23,16 +24,19 @@ export default async (req, res) => {
 
     const jsCode = `
     import React from 'react';
-    import Layout from "./layouts/Layout";
+    import NewHeader from './components/NewHeader';
+    import NewFooter from './components/NewFooter';
     // Define your React component here
     function ${formattedTitle}() {
       return (
-        <Layout>
-        
+        <>
+          <NewHeader />
+          <div className="container my-5 py-5">
           <h1>${title}</h1>
           <div id="paragraph">${formattedDescription}</div>
-        
-        </Layout>
+          </div>
+          <NewFooter />
+        </>
       );
     }
 

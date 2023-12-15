@@ -505,7 +505,13 @@ const handleCheckboxClick = (category, value) => {
             <div className="col-lg-5-1 col-md-6" onClick={() => openModal(model.id)} >
             <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" className="product-card">
               <div className="img-wraper">
+                {model.featuredImage ? (
                 <img className="img-fluid" src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model.featuredImage}`} />
+                ): (
+                <img className="img-fluid" src="images/female.jpg"/> 
+                )
+                }
+
                 {/* <div className="img-bage"><span>new girl</span></div> */}
                 {isNewModel(model.created_at) && <div className="img-bage"><span>new girl</span></div>}
               </div>

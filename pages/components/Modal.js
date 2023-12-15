@@ -1,21 +1,12 @@
 import React from "react";
-
 import { useEffect, useState } from "react";
-
 import { useRef } from "react";
-//import Swiper from "swiper";
-
-
-
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import 'swiper/css';
-
 import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-
 
 const overlayStyle = {
   background: 'rgba(0,0,0,0.5)'
@@ -33,7 +24,6 @@ const divStyle = {
   right: '0px',
 };
 
-
 const spanStyle = {
     color: 'white',
     transform: 'rotate(45deg)',
@@ -44,12 +34,7 @@ const spanStyle = {
     textTransform: 'capitalize',
 }
 
-
-
-
 const Modal = ({ id, onClose }) => {
-
-
 
   const [rates, setRates] = useState([]);
   const [galleryImages, setGalleryImages] = useState([]);
@@ -59,18 +44,15 @@ const Modal = ({ id, onClose }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const swiperRef = useRef(null);
 
-
- 
-
   useEffect(() => {
-	axios.get(`${process.env.NEXT_PUBLIC_API_URL}/models/${id}`)
-	.then((response)=>{
-		setModel(response.data);
-		console.log("****");
-		console.log(response.data);
-		console.log("****");
-	})
-	.catch((error)=>{console.log("Error Fecthing Moda(e)l",error);});
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/models/${id}`)
+    .then((response)=>{
+      setModel(response.data);
+      console.log("****");
+      console.log(response.data);
+      console.log("****");
+    })
+    .catch((error)=>{console.log("Error Fecthing Moda(e)l",error);});
   }, [id]);
 
   useEffect(() => {
@@ -103,6 +85,30 @@ const Modal = ({ id, onClose }) => {
       })
       .catch((error) => console.error("Error fetching services:", error));
   }, [id]);
+
+  useEffect(()=>{
+    // Fetch services for each model
+    const fetchRates = async () => {
+      const ratesData = {};
+  
+      for (const record of model) {
+        try {
+          const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_API_URL}/models/rates/${record.id}`
+          ); // Replace with your service API endpoint
+          ratesData[record.id] = response.data.rates;
+        } catch (error) {
+          console.error('Error fetching services:', error);
+          ratesData[record.id] = [];
+        }
+      }
+      setRates(ratesData);
+    };
+  
+    if (model.length > 0) {
+      fetchRates();
+    }
+  },[model]);
 
 
   const handleButtonClick = (index) => {
@@ -179,6 +185,8 @@ const Modal = ({ id, onClose }) => {
                 </div>
               </div> */}
 
+
+
               <div className="col-lg-4">
                 <div className="owl-carousel owl-theme owl-loaded owl-drag">
                   
@@ -191,7 +199,7 @@ const Modal = ({ id, onClose }) => {
                   onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
                 >
                   
-                   {model && model.featuredImage && (
+                   {/* {model && model.featuredImage && (
                     <SwiperSlide key={0}>
                       <div className="item">
                       <div className="product-card">
@@ -211,12 +219,91 @@ const Modal = ({ id, onClose }) => {
                             <h6>
                               {model.subLocation}, {model.location}
                             </h6>
-                            <p>
-                              <span>incall £XXX</span> <span>Outcall £XXX</span>
-                            </p>
+                            {rates && rates.length > 0 && (
+                              <p>
+                                <span>Incall £{rates[rates.length - 1].incall}</span>
+                                <span>Outcall £{rates[rates.length - 1].outcall}</span>
+                              </p>
+                            )}
                           </div>
                           <div>
-                            <a href="#">BOOK ME</a>
+                            {model.bookLink && (
+                            <a href={model.bookLink}>BOOK ME</a>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                    </SwiperSlide>
+                   )} */}
+
+                  {model.featuredImage ? (
+                    <SwiperSlide key={0}>
+                      <div className="item">
+                      <div className="product-card">
+                        <div className="img-wraper">
+                          <img
+                            className="img-fluid"
+                            src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model.featuredImage}`}
+                            alt="Model Image"
+                          />
+                          <div className="img-badge" style={divStyle}>
+                            <span style={spanStyle}>new girl</span>
+                          </div>
+                        </div>
+                        <div className="product-card-body">
+                          <div>
+                            <h5>{model.title}</h5>
+                            <h6>
+                              {model.subLocation}, {model.location}
+                            </h6>
+                            {rates && rates.length > 0 && (
+                              <p>
+                                <span>Incall £{rates[rates.length - 1].incall}</span>
+                                <span>Outcall £{rates[rates.length - 1].outcall}</span>
+                              </p>
+                            )}
+                          </div>
+                          <div>
+                            {model.bookLink && (
+                            <a href={model.bookLink}>BOOK ME</a>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                    </SwiperSlide>
+                   ): (
+                    <SwiperSlide key={0}>
+                      <div className="item">
+                      <div className="product-card">
+                        <div className="img-wraper">
+                          <img
+                            className="img-fluid"
+                            src="images/female.jpg"
+                            alt="Model Image"
+                          />
+                          <div className="img-badge" style={divStyle}>
+                            <span style={spanStyle}>new girl</span>
+                          </div>
+                        </div>
+                        <div className="product-card-body">
+                          <div>
+                            <h5>{model.title}</h5>
+                            <h6>
+                              {model.subLocation}, {model.location}
+                            </h6>
+                            {rates && rates.length > 0 && (
+                              <p>
+                                <span>Incall £{rates[rates.length - 1].incall}</span>
+                                <span>Outcall £{rates[rates.length - 1].outcall}</span>
+                              </p>
+                            )}
+                          </div>
+                          <div>
+                            {model.bookLink && (
+                            <a href={model.bookLink}>BOOK ME</a>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -241,29 +328,37 @@ const Modal = ({ id, onClose }) => {
                             <h6>
                               {model.subLocation}, {model.location}
                             </h6>
-                            <p>
-                              <span>incall £XXX</span> <span>Outcall £XXX</span>
-                            </p>
+                            {rates && rates.length > 0 && (
+                          <p>
+                            <span>Incall £{rates[rates.length - 1].incall}</span>
+                            <span>Outcall £{rates[rates.length - 1].outcall}</span>
+                          </p>
+                        )}
+                            
                           </div>
                           <div>
-                            <a href="#">BOOK ME</a>
+                            {model.bookLink && (
+                            <a href={model.bookLink}>BOOK ME</a>
+                            )}
                           </div>
                         </div>
                       </div>
                     </SwiperSlide>
                   )}
 
-                  
-
                 </Swiper>
                 </div>
-                <div class="owl-dots">
+
+                  {model.video && (
+                  <div class="owl-dots">
                     <button role="button" style={{border: 'none'}}  class="owl-dot"><span></span></button>
                     <button role="button"  style={{border: 'none'}}  class={`owl-dot  active`}><span></span></button>
                   </div>
+                  )}
+
                 </div>
-                </div>
-              
+              </div>
+             
 
               <div className="col-lg-4">
                 <h5>Rates</h5>
@@ -293,9 +388,13 @@ const Modal = ({ id, onClose }) => {
                 </div>
                 <h5>stats</h5>
                 <div className="row">
+
+                  {model.age && (
                   <div className="col-6">
                     <p>age</p>
                   </div>
+                  )}
+
                   {model && (
                     <>
                       {model.age && (
@@ -305,12 +404,12 @@ const Modal = ({ id, onClose }) => {
                       )}
                     </>
                   )}
-                  {/* <div className="col-6">
-                    <p>27</p>
-                  </div> */}
+                  
+                  {model.nationality && (
                   <div className="col-6">
                     <p>nationality</p>
                   </div>
+                  )}
                   {model && (
                     <>
                       {model.nationality && (
@@ -320,9 +419,12 @@ const Modal = ({ id, onClose }) => {
                       )}
                     </>
                   )}
-                  <div className="col-6">
-                    <p>dress size</p>
-                  </div>
+
+                  {model.dressSize && (
+                    <div className="col-6">
+                      <p>dress size</p>
+                    </div>
+                  )}
                   {model && (
                     <>
                       {model.dressSize && (
@@ -335,9 +437,11 @@ const Modal = ({ id, onClose }) => {
                   {/* <div className="col-6">
                     <p>9</p>
                   </div> */}
+                  {model.height && (
                   <div className="col-6">
                     <p>height</p>
                   </div>
+                  )}
                   {model && (
                     <>
                       {model.height && (
@@ -347,12 +451,12 @@ const Modal = ({ id, onClose }) => {
                       )}
                     </>
                   )}
-                  {/* <div className="col-6">
-                    <p>170cms</p>
-                  </div> */}
+                  
+                  {model.hairColor && (
                   <div className="col-6">
                     <p>hair colour</p>
                   </div>
+                  )}
                   {model && (
                     <>
                       {model.hairColor && (

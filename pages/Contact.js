@@ -152,9 +152,7 @@ function Contact() {
                           value={contact.email}
                           onChange={handleChange}
                         />
-                        {validationErrors.email && (
-                          <div className="text-danger mt-1">Please enter a valid email address</div>
-                        )}
+                        
                       </div>
                     </div>
                     <div className="col-lg-4">

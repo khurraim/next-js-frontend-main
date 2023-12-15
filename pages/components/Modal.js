@@ -110,6 +110,11 @@ const Modal = ({ id, onClose }) => {
     }
   },[model]);
 
+  const isNewModel = (createdAt) => {
+    const oneMonthAgo = new Date();
+    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+    return new Date(createdAt) > oneMonthAgo;
+  };
 
   const handleButtonClick = (index) => {
     // Handle button click to manually set the active slide
@@ -247,9 +252,12 @@ const Modal = ({ id, onClose }) => {
                             src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model.featuredImage}`}
                             alt="Model Image"
                           />
-                          <div className="img-badge" style={divStyle}>
+                          {isNewModel(model.created_at) && (
+                            <div className="img-badge" style={divStyle}>
                             <span style={spanStyle}>new girl</span>
                           </div>
+                          )}
+                          
                         </div>
                         <div className="product-card-body">
                           <div>

@@ -243,6 +243,7 @@ const EditModel = () => {
       formData.append('height', model.height);
       formData.append('phone_no', model.phone_no);
       formData.append('hairColor', model.hairColor);
+      formData.append('bookLink', model.bookLink);
       
       // Append featured image only if a new image is selected
       if (imageFile) {
@@ -436,10 +437,25 @@ const EditModel = () => {
                 onChange={(e) => handleChange(e, 'price')}
               />
             </div>
+
+            <div className='form-group'>
+              <label className='form-label'>Book Link</label>
+              <input
+                name="bookLink"
+                type='text'
+                value={model.bookLink || ''}
+                className='form-control'
+                onChange={(e) => handleChange(e, 'bookLink')}
+              />
+            </div>
+
+
           </div>
 
           <div className="card card-body">
             <div className='form-group'>
+              {model.featuredImage && (
+                <>
               <label className='form-label'>Current Image:</label>
               <br />
               <img
@@ -449,6 +465,8 @@ const EditModel = () => {
                 style={{ width: '100px', height: 'auto' }}
                 className="img-fluid"
               />
+              </>
+              )}
             </div>
 
             <div className='form-group'>

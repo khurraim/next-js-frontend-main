@@ -52,7 +52,7 @@ export default function CreateFileForm() {
     } catch (error) {
       console.error('Error creating file:', error);
       // Optionally, show an error message
-      toast.error("Error updating Page. Title and description is required. Title should be unique");
+      toast.error("Error creating page");
     }
 
     

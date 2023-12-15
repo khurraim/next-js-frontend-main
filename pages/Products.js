@@ -444,7 +444,32 @@ const handleCheckboxClick = (category, value) => {
 
             {filtersApplied && (
               <div class="filter-contant col-12">
-								<h5><span>characteristics</span> ‘{selectedAges.join(',')}’,‘{selectedDressSizes.join(',')}’, ‘{selectedNationalities.join(',')}’</h5>
+
+								<h5>
+                  
+                  <span>characteristics</span> 
+
+                  {selectedAges.length > 0 && (
+                    <>
+                      ‘{selectedAges.join(',')}’,
+                    </>
+                  )}
+                  
+                  {selectedDressSizes.length > 0 && (
+                    <>
+                      ‘{selectedDressSizes.join(',')}’,
+                    </>
+                  )}
+                  
+
+                  {selectedNationalities > 0 && (
+                    <>
+                      ‘{selectedNationalities.join(',')}’
+                    </>
+                  )}
+                  
+                
+                </h5>
 								
                 {selectedIncalls && (
                   <h5><span>price (hourly incall)</span> ‘{selectedIncalls}’</h5>
@@ -454,7 +479,7 @@ const handleCheckboxClick = (category, value) => {
                 <h5><span>price (hourly outcall)</span> {selectedOutcall}</h5>
                 )}
 
-                {selectedSubLocation.length === 0 && (
+                {selectedSubLocation.length > 0 && (
                 <h5><span>location</span> ‘{selectedSubLocation.join("‘,’")}’ </h5>
                 )}
 

@@ -115,6 +115,17 @@ const WorkWithUs = () => {
 
     setFormSubmitted(true);
 
+    if(formData.hairColor === '' ||
+    formData.nationality === '' ||
+    formData.age === '' ||
+    formData.height === '' ||
+    formData.title === '' ||
+    formData.phone_no === '' ||
+    formData.location === '' )
+    {
+      toast.error('Please fill all fields');
+    }
+
     console.log(selectedFiles);
 
     if (selectedFiles.length > 4) {

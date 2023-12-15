@@ -27,54 +27,69 @@ const YourComponentTable = () => {
 
  
   // Fetching Service
-  useEffect(() => {
-    // Fetch services for each model
-    const fetchServices = async () => {
-      const servicesData = {};
+  // useEffect(() => {
+  //   // Fetch services for each model
+  //   const fetchServices = async () => {
+  //     const servicesData = {};
 
-      for (const record of records) {
-        try {
-          const response = await axios.get(
-            `${process.env.NEXT_PUBLIC_API_URL}/models/services/${record.id}`
-          ); // Replace with your service API endpoint
-          servicesData[record.id] = response.data.services;
-        } catch (error) {
-          console.error('Error fetching services:', error);
-          servicesData[record.id] = [];
-        }
-      }
-      setServices(servicesData);
-    };
+  //     for (const record of records) {
+  //       try {
+  //         const response = await axios.get(
+  //           `${process.env.NEXT_PUBLIC_API_URL}/models/services/${record.id}`
+  //         ); // Replace with your service API endpoint
+  //         servicesData[record.id] = response.data.services;
+  //       } catch (error) {
+  //         console.error('Error fetching services:', error);
+  //         servicesData[record.id] = [];
+  //       }
+  //     }
+  //     setServices(servicesData);
+  //   };
 
-    if (records.length > 0) {
-      fetchServices();
-    }
-  }, [records]);
+  //   if (records.length > 0) {
+  //     fetchServices();
+  //   }
+  // }, [records]);
 
-  // Fetching Rates
-  useEffect(()=>{
-    // Fetch services for each model
-    const fetchRates = async () => {
-      const ratesData = {};
+  // // Fetching Rates
+  // useEffect(()=>{
+  //   // Fetch services for each model
+  //   const fetchRates = async () => {
+  //     const ratesData = {};
 
-      for (const record of records) {
-        try {
-          const response = await axios.get(
-            `${process.env.NEXT_PUBLIC_API_URL}/models/rates/${record.id}`
-          ); // Replace with your service API endpoint
-          ratesData[record.id] = response.data.rates;
-        } catch (error) {
-          console.error('Error fetching services:', error);
-          ratesData[record.id] = [];
-        }
-      }
-      setRates(ratesData);
-    };
+  //     for (const record of records) {
+  //       try {
+  //         const response = await axios.get(
+  //           `${process.env.NEXT_PUBLIC_API_URL}/models/rates/${record.id}`
+  //         ); // Replace with your service API endpoint
+  //         ratesData[record.id] = response.data.rates;
+  //       } catch (error) {
+  //         console.error('Error fetching services:', error);
+  //         ratesData[record.id] = [];
+  //       }
+  //     }
+  //     setRates(ratesData);
+  //   };
 
-    if (records.length > 0) {
-      fetchRates();
-    }
-  },[records]);
+  //   if (records.length > 0) {
+  //     fetchRates();
+  //   }
+  // },[records]);
+
+  const approveModel = (id) => {
+    
+      axios.get(`${process.env.NEXT_PUBLIC_API_URL}/ApproveModel/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        toast.success("Model approved successfully");
+      })
+      .catch((error)=>{
+        console.log("Error approving model : ", error);
+        toast.error("Error Approving Model");
+      });  
+    
+    
+  }
 
 
 
@@ -122,6 +137,8 @@ const YourComponentTable = () => {
                 <th>View Details</th>
                 <th>Edit Model</th>
                 <th>Delete Model</th>
+
+                <th>Approve Modal</th>
                 
 
               </tr>
@@ -150,12 +167,25 @@ const YourComponentTable = () => {
                   </td>
                   
                   <td>
+                    
                     <button
                       className="btn btn-large btn-danger w-100 mb-3 mt-3"
                       onClick={() => handleDelete(record.id)}
                     >
                       Delete Model
                     </button>
+                  </td>
+
+                  <td>
+                    
+                    <button 
+                     className='btn btn-large btn-info w-100 mb-3 mt-3'
+                     onClick={() => approveModel(record.id)}
+                     
+                    >
+                      Approve Model
+                    </button>
+                    
                   </td>
 
                 </tr>

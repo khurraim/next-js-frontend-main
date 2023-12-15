@@ -215,6 +215,13 @@ const handleCheckboxClick = (category, value) => {
 
     setFiltersApplied(true);
 
+
+    // Hide the dropdowns when filters applied
+    setIsCharacteristicsVisible(false);
+    setIsLocationsVisible(false);
+    setIsIncallVisible(false);
+    setIsOutcallVisible(false);
+
     if (selectedAges.length > 0) {
       filters.age = selectedAges.join(',');
     }
@@ -276,6 +283,17 @@ const handleCheckboxClick = (category, value) => {
         console.log('Error fetching models:', error);
       });
   };
+
+  const resetFilters = () => {
+    setSelectedAges([]);
+    setSelectedDressSizes([]);
+    setSelectedIncalls(null);
+    setSelectedOutcall(null);
+    setSelectedNationalities([]);
+    setSelectedSubLocation([]);
+
+    setFiltersApplied(false);
+  }
 
   const openModal = async (modelId) => {
     setShowModal(true);
@@ -415,16 +433,31 @@ const handleCheckboxClick = (category, value) => {
                 )}
               </div>
             </div>
-            <div className="text-center mt-5" onClick={handleShowGirls}>
+
+            <div className="text-center mt-5 mb-2" onClick={handleShowGirls}>
               <button className="btn-dark-outline py-2 px-5 "><span className="px-4">Show Girls</span></button>
+            </div>
+
+            <div className="text-center" onClick={resetFilters}>
+              <button className="btn-dark-outline py-2 px-5 "><span className="px-4">Reset Filters</span></button>
             </div>
 
             {filtersApplied && (
               <div class="filter-contant col-12">
 								<h5><span>characteristics</span> ‘{selectedAges.join(',')}’,‘{selectedDressSizes.join(',')}’, ‘{selectedNationalities.join(',')}’</h5>
-								<h5><span>price (hourly incall)</span> ‘{selectedIncalls}’</h5>
-								<h5><span>price (hourly outcall)</span> {selectedOutcall}</h5>
+								
+                {selectedIncalls && (
+                  <h5><span>price (hourly incall)</span> ‘{selectedIncalls}’</h5>
+								)}
+
+                {selectedOutcall && (
+                <h5><span>price (hourly outcall)</span> {selectedOutcall}</h5>
+                )}
+
+                {selectedSubLocation.length === 0 && (
                 <h5><span>location</span> ‘{selectedSubLocation.join("‘,’")}’ </h5>
+                )}
+
 								<h5></h5>
 						  </div>
             )}

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import AuthUser from "./components/AuthUser";
 import { ToastContainer, toast } from 'react-toastify';
-import Layout from "./layouts/Layout";
+//import Layout from "./layouts/Layout";
 import axios from "axios";
 import { useRouter } from "next/router";
+import NewHeader from "./components/NewHeader";
+import NewFooter from "./components/NewFooter";
 
 const Login = () => {
   //const { http, saveToken } = AuthUser(); // Call AuthUser only once
@@ -69,9 +71,11 @@ const Login = () => {
   }
 
   return (
-    <Layout>
-    <div className="row justify-content-center py-5 mb-5">
-      <div className="col-sm-6">
+    <>
+    <NewHeader />
+    
+    <div className="row justify-content-center mt-5 py-5 mb-5">
+      <div className="col-sm-6 mt-5">
         <div className="card p-4">
           <h1 className="text-center mb-3">Login </h1>
           <div className="form-group">
@@ -105,7 +109,8 @@ const Login = () => {
         </div>
       </div>
     </div>
-    </Layout>  
+    <NewFooter />
+    </>  
   );
 }
 

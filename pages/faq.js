@@ -55,7 +55,7 @@ const FAQCollapsibleList = () => {
           <div className="accordion" id="accordionExample">
           {faqs.map((faq) => (
             <div className="accordion-item">
-              <button onClick={() => toggleItem(faq.id)} className={` ${openItem === faq.id ? 'plusIcon': ''} accordion-button`} id="headingOne" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <button onClick={() => toggleItem(faq.id)} className={` ${openItem === faq.id ? 'plusIcon collapsed': ''} accordion-button`} id="headingOne" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 
                 {faq.question}
               </button>

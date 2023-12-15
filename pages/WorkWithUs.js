@@ -30,7 +30,8 @@ const submitButtonStyle = {
 const iMarkStyle = {
   color: '#fff',
   background: 'red',
-  padding: '0px 10px'
+  padding: '0px 10px',
+  marginRight: '10px'
 }
 
 const WorkWithUs = () => {
@@ -225,7 +226,7 @@ const WorkWithUs = () => {
               <div className="col-lg-6">
                 <div className="form-group">
                   <label className="form-label">
-                    {formSubmitted && formData.title === '' && <span style={iMarkStyle}>!</span>}&nbsp; Name*</label>
+                    {formSubmitted && formData.title === '' && <span style={iMarkStyle}>!</span>}  Name*</label>
                     <input 
                     type="text"
                     name="title" 
@@ -238,7 +239,7 @@ const WorkWithUs = () => {
               <div className="col-lg-6">
                 <div className="form-group">
                   <label className="form-label">
-                  {formSubmitted && formData.phone_no === '' && <span style={iMarkStyle}>!</span>}&nbsp;  
+                  {formSubmitted && formData.phone_no === '' && <span style={iMarkStyle}>!</span>}   
                     phone number*
                   </label>
                   <input 
@@ -253,7 +254,7 @@ const WorkWithUs = () => {
               <div className="col-lg-6">
                 <div className="form-group">
                   <label className="form-label">
-                  {formSubmitted && formData.age === '' && <span style={iMarkStyle}>!</span>}&nbsp;  
+                  {formSubmitted && formData.age === '' && <span style={iMarkStyle}>!</span>}   
                     age*
                   </label>
                   <input 
@@ -268,7 +269,7 @@ const WorkWithUs = () => {
               <div className="col-lg-6">
                 <div className="form-group">
                   <label className="form-label">
-                  {formSubmitted && formData.location === '' && <span style={iMarkStyle}>!</span>}&nbsp; 
+                  {formSubmitted && formData.location === '' && <span style={iMarkStyle}>!</span>}  
                     location*
                   </label>
                   <input 
@@ -283,7 +284,7 @@ const WorkWithUs = () => {
               <div className="col-lg-6">
                 <div className="form-group">
                   <label className="form-label">
-                  {formSubmitted && formData.nationality === '' && <span style={iMarkStyle}>!</span>}&nbsp; 
+                  {formSubmitted && formData.nationality === '' && <span style={iMarkStyle}>!</span>}  
                     nationality*
                   </label>
                   <input 
@@ -298,7 +299,7 @@ const WorkWithUs = () => {
               <div className="col-lg-6">
                 <div className="form-group">
                   <label className="form-label">
-                  {formSubmitted && formData.dressSize === '' && <span style={iMarkStyle}>!</span>}&nbsp;
+                  {formSubmitted && formData.dressSize === '' && <span style={iMarkStyle}>!</span>} 
                     dress size*
                   </label>
                   <input 
@@ -313,7 +314,7 @@ const WorkWithUs = () => {
               <div className="col-lg-6">
                 <div className="form-group">
                   <label className="form-label">
-                  {formSubmitted && formData.height === '' && <span style={iMarkStyle}>!</span>}&nbsp;
+                  {formSubmitted && formData.height === '' && <span style={iMarkStyle}>!</span>} 
                     height*
                     </label>
                   <input 
@@ -328,7 +329,7 @@ const WorkWithUs = () => {
               <div className="col-lg-6">
                 <div className="form-group">
                   <label className="form-label">
-                  {formSubmitted && formData.hairColor === '' && <span style={iMarkStyle}>!</span>}&nbsp;
+                  {formSubmitted && formData.hairColor === '' && <span style={iMarkStyle}>!</span>} 
                     hair colour*
                   </label>
                   <input 
@@ -342,7 +343,10 @@ const WorkWithUs = () => {
               </div>
               <div className="col-lg-12">
                 <div className="form-group">
-                  <label className="form-label my-4">upload four photos*</label>
+                  <label className="form-label my-4">
+                    {formSubmitted && images.length === 0 && (<span style={iMarkStyle}>!</span>)}
+                    upload four photos*
+                  </label>
                   <div className="upload-photo">
                     <button type="button" className="enter">Uppload</button>
                     <input 
@@ -374,6 +378,27 @@ const WorkWithUs = () => {
               </div>
             </div>
           </form>
+
+      
+
+          {formSubmitted && 
+            (formData.hairColor === '' || 
+            formData.nationality === '' || 
+            formData.age === '' || 
+            formData.height === '' || 
+            formData.title === '' ||  
+            formData.phone_no === '' || 
+            formData.location === '' ||
+            images.length === 0) ? 
+            <div className='d-flex align-items-center my-3'>
+              <span style={iMarkStyle}>!</span> 
+              <p className='text-uppercase text-danger mt-3'>
+                  Please fill in all required fields
+              </p>
+            </div> 
+            : null}
+
+
           <ul className="my-5">
             <li>By using the form above to upload your details you are confirming the following:</li>
             <li>You are legally able to work in the UK or whatever country you are based in.</li>

@@ -21,6 +21,28 @@ const overlayStyle = {
   background: 'rgba(0,0,0,0.5)'
 }
 
+const divStyle = {
+  backgroundImage: 'url(../images/img-bage.png)',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  height: '73px',
+  display: 'block',
+  width: '57px',
+  position: 'absolute',
+  top: '1px',
+  right: '0px',
+};
+
+
+const spanStyle = {
+    color: 'white',
+    transform: 'rotate(45deg)',
+    display: 'block',
+    fontSize: '13px',
+    marginTop: '13px',
+    marginLeft: '13px',
+    textTransform: 'capitalize',
+}
 
 
 
@@ -179,8 +201,8 @@ const Modal = ({ id, onClose }) => {
                             src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model.featuredImage}`}
                             alt="Model Image"
                           />
-                          <div className="img-badge">
-                            <span>new girl</span>
+                          <div className="img-badge" style={divStyle}>
+                            <span style={spanStyle}>new girl</span>
                           </div>
                         </div>
                         <div className="product-card-body">

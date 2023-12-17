@@ -357,12 +357,21 @@ const Modal = ({ id, onClose }) => {
                 </Swiper>
                 </div>
 
-                  {model.video && (
-                  <div class="owl-dots">
-                    <button role="button" style={{border: 'none'}}  class="owl-dot"><span></span></button>
-                    <button role="button"  style={{border: 'none'}}  class={`owl-dot  active`}><span></span></button>
-                  </div>
-                  )}
+                  
+
+                <div className="owl-dots">
+                        {Array.from({ length: 2 }).map((_, index) => (
+                          <button
+                            key={index}
+                            role="button"
+                            style={{ border: 'none' }}
+                            className={`owl-dot ${index === activeSlide ? 'active' : ''}`}
+                            onClick={() => swiperRef.current.swiper.slideTo(index)}
+                          >
+                            <span></span>
+                          </button>
+                        ))}
+                      </div>
 
                 </div>
               </div>

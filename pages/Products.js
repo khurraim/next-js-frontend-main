@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import NewHeader from "./components/NewHeader";
@@ -41,6 +41,17 @@ const products = () => {
   const [selectedOutcall, setSelectedOutcall] = useState(null);
 
   const [id, selectedId] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const pageSize = 10; // Number of models per page
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+
+  const handleLoadMore = () => {
+    // Increment the current page and fetch more models
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
 
   const toggleCharacteristicsVisibility = () => {
     setIsCharacteristicsVisible(!isCharacteristicsVisible);
@@ -498,7 +509,7 @@ const handleCheckboxClick = (category, value) => {
         {modelsData.length === 0 ? (
             <p>No models found.</p>
           ) : (
-        modelsData.map((model) => {
+        modelsData.slice(0, endIndex).map((model) => {
               const modelRates = rates[model.id];
 
             return (
@@ -535,6 +546,19 @@ const handleCheckboxClick = (category, value) => {
 
           )}
       </div>
+
+      {endIndex > modelsData.length ? ' ' : 
+      <button 
+      onClick={handleLoadMore} 
+      style={{border: 'none'}} 
+      className="d-block px-5 py-3 mx-auto bg-dark text-white">
+        Load More
+      </button>
+      }
+      
+
+      
+
     </div>
   </section>
   {/* infomodal trigger modal */}

@@ -147,48 +147,7 @@ const Modal = ({ id, onClose }) => {
           </div>
           <div className="modal-body">
             <div className="row mx-0">
-              {/* <div className="col-lg-4">
-                <div className="product-card">
-                  <div className="img-wraper">
-                      {model && (
-                      <>
-                        {model.featuredImage && (
-                          <img
-                          className="img-fluid"
-                          src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model.featuredImage}`}
-                          />
-                        )}
-                      </>
-                      )}
-                    
-                    <div className="img-bage">
-                      <span>new girl</span>
-                    </div>
-                  </div>
-                  <div className="product-card-body">
-
-                    
-
-                    {model && (
-                      <>
-                        {model.featuredImage && (
-                          <div>
-                          <h5>{model.title}</h5>
-                          <h6>{model.subLocation}, {model.location}</h6>
-                          <p>
-                            <span>incall £XXX</span> <span>Outcall £XXX</span>
-                          </p>
-                        </div>
-                        )}
-                      </>
-                      )}
-
-                    <div>
-                      <a href="#">BOOK ME</a>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
+              
 
 
 
@@ -196,7 +155,8 @@ const Modal = ({ id, onClose }) => {
                 <div className="owl-carousel owl-theme owl-loaded owl-drag">
                   
                   <div className="owl-carousel owl-theme">
-                <Swiper
+
+                {/* <Swiper
                   ref={swiperRef}
                   spaceBetween={50}
                   slidesPerView={1}
@@ -204,43 +164,7 @@ const Modal = ({ id, onClose }) => {
                   onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
                 >
                   
-                   {/* {model && model.featuredImage && (
-                    <SwiperSlide key={0}>
-                      <div className="item">
-                      <div className="product-card">
-                        <div className="img-wraper">
-                          <img
-                            className="img-fluid"
-                            src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model.featuredImage}`}
-                            alt="Model Image"
-                          />
-                          <div className="img-badge" style={divStyle}>
-                            <span style={spanStyle}>new girl</span>
-                          </div>
-                        </div>
-                        <div className="product-card-body">
-                          <div>
-                            <h5>{model.title}</h5>
-                            <h6>
-                              {model.subLocation}, {model.location}
-                            </h6>
-                            {rates && rates.length > 0 && (
-                              <p>
-                                <span>Incall £{rates[rates.length - 1].incall}</span>
-                                <span>Outcall £{rates[rates.length - 1].outcall}</span>
-                              </p>
-                            )}
-                          </div>
-                          <div>
-                            {model.bookLink && (
-                            <a href={model.bookLink}>BOOK ME</a>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                      </div>
-                    </SwiperSlide>
-                   )} */}
+                   
 
                   {model.featuredImage ? (
                     <SwiperSlide key={0}>
@@ -354,7 +278,66 @@ const Modal = ({ id, onClose }) => {
                     </SwiperSlide>
                   )}
 
-                </Swiper>
+                </Swiper> */}
+
+                <div className="item">
+                      <div className="product-card">
+                      <div className="img-wraper">
+                        <Swiper
+                        ref={swiperRef}
+                        spaceBetween={50}
+                        slidesPerView={1}
+                        loop={true}
+                        onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}>
+                          
+
+                            <SwiperSlide key={0}>
+                            <img
+                              className="img-fluid"
+                              src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model.featuredImage}`}
+                              alt="Model Image"
+                            />
+                            </SwiperSlide>
+
+                            <SwiperSlide>
+                            <video className="video-item" style={{height: '450px'}} controls loop>
+                            <source
+                              src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model.video}`}
+                              type="video/mp4"
+                            />
+                          </video>
+                            </SwiperSlide>
+                            {isNewModel(model.created_at) && (
+                              <div className="img-badge" style={divStyle}>
+                              <span style={spanStyle}>new girl</span>
+                            </div>
+                            )}
+                            
+                          
+                          <div className="product-card-body">
+                            <div>
+                              <h5>{model.title}</h5>
+                              <h6>
+                                {model.subLocation}, {model.location}
+                              </h6>
+                              {rates && rates.length > 0 && (
+                                <p>
+                                  <span>Incall £{rates[rates.length - 1].incall}</span>
+                                  <span>Outcall £{rates[rates.length - 1].outcall}</span>
+                                </p>
+                              )}
+                            </div>
+                            <div>
+                              {model.bookLink && (
+                              <a href={model.bookLink}>BOOK ME</a>
+                              )}
+                            </div>
+                          </div>
+                        </Swiper>
+                        </div>
+                      </div>
+                      </div>
+
                 </div>
 
                   

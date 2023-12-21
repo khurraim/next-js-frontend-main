@@ -415,7 +415,7 @@ const handleCheckboxClick = (category, value) => {
               <div className="selectBox">
                 <div className="selectBox__value" onClick={toggleIncallVisibility}>
                     {selectedIncalls ? (<>
-                        {selectedIncalls}
+                      £ &nbsp;{selectedIncalls}
                     </>): 'price (hourly incall)' }
                 </div>
                 {isIncallVisible && (
@@ -431,7 +431,7 @@ const handleCheckboxClick = (category, value) => {
               <div className="selectBox">
                 <div className="selectBox__value"  onClick={toggleOutcallVisibility} >
                 {selectedOutcall ? (<>
-                        {selectedOutcall}
+                  £ &nbsp; {selectedOutcall}
                     </>): 'price (hourly outcall)' }
                 </div>
                 {isOutcallVisible && (

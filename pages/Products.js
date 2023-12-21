@@ -449,9 +449,15 @@ const handleCheckboxClick = (category, value) => {
               <button className="btn-dark-outline py-2 px-5 "><span className="px-4">Show Girls</span></button>
             </div>
 
-            <div className="text-center" onClick={resetFilters}>
+            {/* <div className="text-center" onClick={resetFilters}>
               <button className="btn-dark-outline py-2 px-5 "><span className="px-4">Reset Filters</span></button>
+            </div> */}
+
+            <div className="text-center mt-3" onClick={resetFilters}>
+              <a href='#'><span className="px-4">Reset Filters</span></a>
             </div>
+
+            
 
             {filtersApplied && (
               <div class="filter-contant col-12">
@@ -551,7 +557,7 @@ const handleCheckboxClick = (category, value) => {
       <button 
       onClick={handleLoadMore} 
       style={{border: 'none'}} 
-      className="d-block px-5 py-3 mx-auto bg-dark text-white">
+      className="d-block px-5 mt-5 py-3 mx-auto bg-dark text-white">
         Load More
       </button>
       }

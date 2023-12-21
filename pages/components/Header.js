@@ -298,7 +298,9 @@ const Header = () => {
         <header className="header home-menu">
             <div className="container-fluid px-lg-5">
                 <nav className="navbar navbar-expand-lg">
-                    <a className="navbar-brand d-block d-lg-none" href="/">GOOD GIRLS <span>GONE BAD</span></a>
+                    <a className="navbar-brand d-block d-lg-none" href="/home">
+                        GOOD GIRLS <span>GONE BAD</span>
+                    </a>
                     <button 
                         className="navbar-toggler" 
                         type="button" 
@@ -307,7 +309,7 @@ const Header = () => {
                         <FontAwesomeIcon icon={faBars} />
                     </button>
                     <div className={`collapse navbar-collapse ${mobileMenuOpen ? 'show' : ''}`}>
-                        <div className="nav-inner">
+                        <div className="nav-inner" style={{alignItems: 'flex-start'}}>
                             <ul className="navbar-nav mb-2 mb-lg-0" style={{ backgroundColor: 'transparent', border: 'none' }}>
                             <li class="nav-item">
  								<Link class="nav-link" aria-current="page" href="/">Home</Link>
@@ -335,9 +337,9 @@ const Header = () => {
                             </ul>
                             <a className="navbar-brand d-none d-lg-block" href="/">GOOD GIRLS <span>GONE BAD</span></a>
                             
-                            <div >
+                            <div className="d-flex align-items-center">
                             {socialIcons.map((icon) => (
-                                <Link className="nav-link" href={icon.link} target="_blank" rel="noopener noreferrer" key={icon.id}>
+                                <Link className="nav-link mx-2" href={icon.link} target="_blank" rel="noopener noreferrer" key={icon.id}>
                                     {icon.name === 'Twitter' ? (
                                         <FontAwesomeIcon
                                             icon={faTwitter}

@@ -96,14 +96,14 @@ const NewHeader = () => {
     <header class="header ">
 		<div class="container-fluid px-lg-5">
 			<nav class="navbar navbar-expand-lg ">
-				<a class="navbar-brand d-block d-lg-none" href="index.html">GOOD GIRLS <span>GONE BAD</span></a>
+				<a class="navbar-brand d-block d-lg-none" href="/">GOOD GIRLS <span>GONE BAD</span></a>
 						
 					<button style={{border: 'none'}} class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <FontAwesomeIcon onClick={toggleMobileMenu} icon={faBars} />
 					</button>
 
 					<div className={`collapse navbar-collapse ${mobileMenuOpen ? 'show' : ''}`} id="navbarSupportedContent">
-						<div class="nav-inner">
+						<div class="nav-inner" style={{alignItems: 'flex-start'}}>
 						<ul class="navbar-nav mb-2 mb-lg-0"  style={{ backgroundColor: 'transparent', border: 'none' }}>
 							<li class="nav-item">
 								<Link class="nav-link " aria-current="page" href="/">Home</Link>

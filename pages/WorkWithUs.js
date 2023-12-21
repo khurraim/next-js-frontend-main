@@ -410,7 +410,7 @@ const WorkWithUs = () => {
             : null}
 
 
-          <ul className="my-5">
+          <ul className="my-5 listing-bullets">
             <li>By using the form above to upload your details you are confirming the following:</li>
             <li>You are legally able to work in the UK or whatever country you are based in.</li>
             <li>You are of legal age to work in that country.</li>

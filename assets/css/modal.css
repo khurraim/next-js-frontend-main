@@ -42,3 +42,12 @@
 html,body {
   font-family: 'Anton' !important;
 }
+
+.products-sec .product-card {
+  height: calc(100% - 90px);
+}
+
+.listing-bullets {
+  padding-left: 17px ;
+}
+

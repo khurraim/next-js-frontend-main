@@ -540,14 +540,16 @@ text-underline-position: under;
   text-align: center;
 }
 .infoGirl-modal .owl-dots button{
-  background-color: #b8a1a1  ;
-  width: 25px;
-  height: 6px;
+  background-color: transparent  ;
+  width: 15px;
+  border: 1px solid white;
+  height: 15px;
   margin:0 5px ;
 }
 .infoGirl-modal .owl-dots .active{
   /* background-color: var(--fb-primary-color); */
   background-color: white;
+  border: 1px solid white;
 }
 .product-card .product-card-body a{
   color: var(--fb-white-color);

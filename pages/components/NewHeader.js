@@ -96,7 +96,7 @@ const NewHeader = () => {
     <header class="header ">
 		<div class="container-fluid px-lg-5">
 			<nav class="navbar navbar-expand-lg ">
-				<a class="navbar-brand d-block d-lg-none" href="/">GOOD GIRLS <span>GONE BAD</span></a>
+				<Link class="navbar-brand d-block d-lg-none" href="/">GOOD GIRLS <span>GONE BAD</span></Link>
 						
 					<button style={{border: 'none'}} class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <FontAwesomeIcon onClick={toggleMobileMenu} icon={faBars} />

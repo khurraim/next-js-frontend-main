@@ -357,7 +357,7 @@ const Modal = ({ id, onClose }) => {
                           <button
                             key={index}
                             role="button"
-                            style={{ border: 'none' }}
+                            
                             className={`owl-dot ${index === activeSlide ? 'active' : ''}`}
                             onClick={() => swiperRef.current.swiper.slideTo(index)}
                           >

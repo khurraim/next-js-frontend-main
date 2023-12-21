@@ -55,7 +55,7 @@ html,body {
   position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: calc(100% - 130px);
+    top: calc(100% - 180px);
     z-index: 2;
 }
 
@@ -67,4 +67,8 @@ html,body {
 
 .swiper-slider-column .img-wraper {
   top: unset;
+}
+
+.swiper-slider-column .product-card .product-card-body {
+  margin-top: -60px;
 }

@@ -299,9 +299,9 @@ const Header = () => {
         <header className="header home-menu">
             <div className="container-fluid px-lg-5">
                 <nav className="navbar navbar-expand-lg">
-                    <a className="navbar-brand d-block d-lg-none" href="/home">
+                    <Link className="navbar-brand d-block d-lg-none" href="/">
                         GOOD GIRLS <span>GONE BAD</span>
-                    </a>
+                    </Link>
                     <button 
                         className="navbar-toggler" 
                         type="button" 

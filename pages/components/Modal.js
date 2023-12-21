@@ -151,8 +151,8 @@ const Modal = ({ id, onClose }) => {
 
 
 
-              <div className="col-lg-4">
-                <div className="owl-carousel owl-theme owl-loaded owl-drag">
+              <div className="col-lg-4 swiper-slider-column">
+                <div className="owl-carousel owl-theme owl-loaded owl-drag" style={{position: "relative"}}>
                   
                   <div className="owl-carousel owl-theme">
 
@@ -282,37 +282,47 @@ const Modal = ({ id, onClose }) => {
 
                 <div className="item">
                       <div className="product-card">
-                      <div className="img-wraper">
+                      
                         <Swiper
                         ref={swiperRef}
                         spaceBetween={50}
                         slidesPerView={1}
+                        className="swiper-wrapper-class"
                         loop={true}
                         onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}>
                           
 
                             <SwiperSlide key={0}>
-                            <img
-                              className="img-fluid"
-                              src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model.featuredImage}`}
-                              alt="Model Image"
-                            />
+                              <div className="img-wraper">
+                              <img
+                                className="img-fluid"
+                                src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model.featuredImage}`}
+                                alt="Model Image"
+                              />
+                              </div>
                             </SwiperSlide>
 
-                            <SwiperSlide>
-                            <video className="video-item" style={{height: '450px'}} controls loop>
-                            <source
-                              src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model.video}`}
-                              type="video/mp4"
-                            />
-                          </video>
+
+                            {model && model.video && (
+                            <SwiperSlide key={1}>
+                              <div className="img-wraper">
+                              <video className="video-item" style={{height: '450px'}} controls loop>
+                              <source
+                                src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model.video}`}
+                                type="video/mp4"
+                              />  
+                              </video>
+                              </div>
                             </SwiperSlide>
+                            )}
+
                             {isNewModel(model.created_at) && (
                               <div className="img-badge" style={divStyle}>
                               <span style={spanStyle}>new girl</span>
                             </div>
                             )}
                             
+                            </Swiper>
                           
                           <div className="product-card-body">
                             <div>
@@ -333,8 +343,8 @@ const Modal = ({ id, onClose }) => {
                               )}
                             </div>
                           </div>
-                        </Swiper>
-                        </div>
+                        
+                        
                       </div>
                       </div>
 
@@ -342,7 +352,7 @@ const Modal = ({ id, onClose }) => {
 
                   
 
-                <div className="owl-dots">
+                <div className="owl-dots dots-style">
                         {Array.from({ length: 2 }).map((_, index) => (
                           <button
                             key={index}

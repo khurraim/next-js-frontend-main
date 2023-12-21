@@ -540,13 +540,14 @@ text-underline-position: under;
   text-align: center;
 }
 .infoGirl-modal .owl-dots button{
-  background-color: lightgray;
+  background-color: #b8a1a1  ;
   width: 25px;
   height: 6px;
   margin:0 5px ;
 }
 .infoGirl-modal .owl-dots .active{
-  background-color: var(--fb-primary-color);
+  /* background-color: var(--fb-primary-color); */
+  background-color: white;
 }
 .product-card .product-card-body a{
   color: var(--fb-white-color);

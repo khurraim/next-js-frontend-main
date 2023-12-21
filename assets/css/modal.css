@@ -51,3 +51,20 @@ html,body {
   padding-left: 17px ;
 }
 
+.dots-style {
+  position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(100% - 130px);
+    z-index: 2;
+}
+
+.swiper-wrapper-class {
+  position: relative;
+  top: -60px;
+  margin-left: -15px !important;
+}
+
+.swiper-slider-column .img-wraper {
+  top: unset;
+}

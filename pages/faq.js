@@ -54,14 +54,24 @@ const FAQCollapsibleList = () => {
           <h1 className="sub-heading mb-3 mt-4">MOST POPULAR QUESTIONS</h1>
           <div className="accordion" id="accordionExample">
           {faqs.map((faq) => (
-            <div className="accordion-item">
-              <button onClick={() => toggleItem(faq.id)} className={` ${openItem === faq.id ? 'plusIcon collapsed': ''} accordion-button`} id="headingOne" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <div className={`accordion-item ${openItem === faq.id ? 'mb-4' : ''}`}>
+              <button 
+              onClick={() => toggleItem(faq.id)} 
+              //className={` ${openItem === faq.id ? 'plusIcon collapsed': ''} accordion-button`} 
+              className={` ${openItem === faq.id ? '' : 'plusIcon collapsed'} accordion-button`}
+              //className={` ${openItem === faq.id ? 'minusIcon collapsed' : ' '} accordion-button`}
+              id="headingOne" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              data-bs-target="#collapseOne" 
+              aria-expanded="true" 
+              aria-controls="collapseOne">
                 
                 {faq.question}
               </button>
               <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               {openItem === faq.id && (
-                <div className="accordion-body">
+                <div className="accordion-body ps-0">
                   {faq.answer} 
                 </div>
               )}

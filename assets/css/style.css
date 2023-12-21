@@ -775,10 +775,13 @@ text-transform: uppercase;
 }
 .innrerPages-waper .accordion-button::after{
   position: absolute;
-  left: -8px;
+  left: -2px;
+  top: 10px;
+  font-weight: bolder;
   font-family: FontAwesome;
   content: '\2b';
-    background-image: none;
+  background-image: none;
+  transform: unset;
 }
 .accordion-button:not(.collapsed)::after{
 

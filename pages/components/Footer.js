@@ -43,13 +43,15 @@ const Footer = () => {
                     <div ><img className="img-fluid" src="/images/payment.png"/></div>
                     
                     <div className="text-white d-flex">
+                        <h5>
                         {menus.map((menu) => (
-                            <h5>
+                            
                                 <Link className="text-white text-decoration-none mx-2" href={`/${pages[menu.page_id]?.replace(/\s/g, '')}`}>
                                     {menu.title}
                                 </Link>
-                            </h5>
+                            
                         ))}
+                        </h5>
                     </div>
                 </div>
                 

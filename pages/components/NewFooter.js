@@ -44,13 +44,15 @@ const NewFooter = () => {
                 <div className><img className="img-fluid" src="images/payment-footer.png" /></div>
                 <div className>
                     {/* <h5>terms &amp; conditions</h5> */}
+                    <h5 className="d-flex">
                     {menus.map((menu) => (
-                            <h5 className="d-flex">
+                            
                                 <Link className="text-dark text-decoration-none mx-2" href={`/${pages[menu.page_id]?.replace(/\s/g, '')}`}>
                                     {menu.title}
                                 </Link>
-                            </h5>
+                            
                         ))}
+                        </h5>
                 </div>
             </div>
         </div>

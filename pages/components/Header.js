@@ -335,6 +335,7 @@ const Header = () => {
                             </ul>
                             <a className="navbar-brand d-none d-lg-block" href="/">GOOD GIRLS <span>GONE BAD</span></a>
                             
+                            <div >
                             {socialIcons.map((icon) => (
                                 <Link className="nav-link" href={icon.link} target="_blank" rel="noopener noreferrer" key={icon.id}>
                                     {icon.name === 'Twitter' ? (
@@ -371,6 +372,7 @@ const Header = () => {
                                     }
                                 </Link>
                             ))}
+                            </div>
                         </div>
                     </div>
                 </nav>

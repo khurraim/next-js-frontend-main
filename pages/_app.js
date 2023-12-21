@@ -14,8 +14,6 @@ import '@/assets/css/fontsIcon.css';
 import '@/assets/css/style.css';
 import '@/assets/css/modal.css';
 
-
-
 // import Font Awesome CSS
 import "@fortawesome/fontawesome-svg-core/styles.css"; 
 
@@ -27,9 +25,11 @@ config.autoAddCss = false;
 
 
 export default function App({ Component, pageProps }) {
+  
   const router = useRouter();
 
   useEffect(() => {
+  
     if (router.pathname.includes('dashboard')) {
       import('@/assets/vendor/bootstrap/css/bootstrap.min.css');
       import('@/assets/vendor/fonts/circular-std/style.css');

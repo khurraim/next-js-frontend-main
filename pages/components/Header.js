@@ -334,7 +334,7 @@ const Header = () => {
                                 ))}
                             </ul>
                             <a className="navbar-brand d-none d-lg-block" href="/">GOOD GIRLS <span>GONE BAD</span></a>
-                            <a className="nav-link" href="https://www.instagram.com/"><i className="fa-brands fa-instagram"></i></a>
+                            
                             {socialIcons.map((icon) => (
                                 <Link className="nav-link" href={icon.link} target="_blank" rel="noopener noreferrer" key={icon.id}>
                                     {icon.name === 'Twitter' ? (

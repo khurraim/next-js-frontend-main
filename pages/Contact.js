@@ -98,7 +98,7 @@ function Contact() {
     <>
       <NewHeader />
       <main className="main-wrapper innrerPages-waper">
-        <div className="container-lg inner-product" style={{ maxWidth: '1900px' }}>
+        <div className="container-lg inner-product">
           <div className="row px-lg-5">
             <div className="col-lg-7 mx-auto">
               <div className="product-card">

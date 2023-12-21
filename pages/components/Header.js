@@ -216,6 +216,7 @@ import {
     faFacebook, 
     faInstagram, 
     faSnapchat, 
+    faXTwitter,
     faLinkedin, 
     faPinterest,
 } from "@fortawesome/free-brands-svg-icons";
@@ -342,7 +343,7 @@ const Header = () => {
                                 <Link className="nav-link mx-2" href={icon.link} target="_blank" rel="noopener noreferrer" key={icon.id}>
                                     {icon.name === 'Twitter' ? (
                                         <FontAwesomeIcon
-                                            icon={faTwitter}
+                                            icon={faXTwitter}
                                             className="fab fa-twitter text-white "
                                         />
                                     ) : icon.name === 'Facebook' ? (

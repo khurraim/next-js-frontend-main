@@ -138,6 +138,7 @@ useEffect(()=>{
   // })
   // .catch((error)=>{console.log("Error fetching models : ",error)});
   handleShowGirls();
+  
 },[filtersApplied]);
 
 
@@ -469,7 +470,10 @@ const handleCheckboxClick = (category, value) => {
 
 								<h5>
                   
+                {(selectedAges.length > 0 || selectedDressSizes.length > 0 || selectedNationalities.length > 0) && (
                   <span>characteristics</span> 
+                )}
+                
 
                   {selectedAges.length > 0 && (
                     <>

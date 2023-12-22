@@ -28,16 +28,27 @@ export default function App({ Component, pageProps }) {
   
   const router = useRouter();
 
-  useEffect(() => {
+  // useEffect(() => {
   
-    if (router.pathname.includes('dashboard')) {
-      import('@/assets/vendor/bootstrap/css/bootstrap.min.css');
-      import('@/assets/vendor/fonts/circular-std/style.css');
-      import('@/assets/libs/css/style.css');
-      import('@/assets/vendor/fonts/flag-icon-css/flag-icon.min.css');
-    }
+  //   if (router.pathname.includes('dashboard')) {
+  //     import('@/assets/vendor/bootstrap/css/bootstrap.min.css');
+  //     import('@/assets/vendor/fonts/circular-std/style.css');
+  //     import('@/assets/libs/css/style.css');
+  //     import('@/assets/vendor/fonts/flag-icon-css/flag-icon.min.css');
+  //   }
 
-  }, [router.pathname]);
+  // }, [router.pathname]);
+
+  console.log("dashboard returns : ",router.pathname.includes('dashboard'));
+
+  if(router.pathname.includes('dashboard')) {
+        
+        import('@/assets/vendor/bootstrap/css/bootstrap.min.css');
+        import('@/assets/vendor/fonts/circular-std/style.css');
+        import('@/assets/libs/css/style.css');
+        import('@/assets/vendor/fonts/flag-icon-css/flag-icon.min.css');
+  }
+
   return <><Component {...pageProps} /><ToastContainer /> </>
 }
 

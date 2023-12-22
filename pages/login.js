@@ -74,7 +74,7 @@ const Login = () => {
     <>
     <NewHeader />
     
-    <div className="row justify-content-center mt-5 py-5 mb-5">
+    <div className="row justify-content-center mt-5 py-5 mb-5 bg-white">
       <div className="col-sm-6 mt-5">
         <div className="card p-4">
           <h1 className="text-center mb-3">Login </h1>

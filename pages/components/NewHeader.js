@@ -93,7 +93,7 @@ const NewHeader = () => {
 
 
     return (
-    <header class="header ">
+    <header class="header bg-white">
 		<div class="container-fluid px-lg-5">
 			<nav class="navbar navbar-expand-lg ">
 				<Link class="navbar-brand d-block d-lg-none" href="/">

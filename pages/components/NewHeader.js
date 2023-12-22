@@ -96,7 +96,9 @@ const NewHeader = () => {
     <header class="header ">
 		<div class="container-fluid px-lg-5">
 			<nav class="navbar navbar-expand-lg ">
-				<Link class="navbar-brand d-block d-lg-none" href="/">GOOD GIRLS <span>GONE BAD</span></Link>
+				<Link class="navbar-brand d-block d-lg-none" href="/">
+                    GOOD GIRLS <span>GONE BAD</span>
+                </Link>
 						
 					<button style={{border: 'none'}} class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <FontAwesomeIcon onClick={toggleMobileMenu} icon={faBars} />
@@ -129,7 +131,7 @@ const NewHeader = () => {
                                     </li>
                                 ))}
 						</ul>
-						<a class="navbar-brand d-none d-lg-block" href="index.html">GOOD GIRLS <span>GONE BAD</span></a>
+						<a class="navbar-brand d-none d-lg-block" href="/">GOOD GIRLS <span>GONE BAD</span></a>
 						<div class="d-flex">
                             {socialIcons.map((icon)=> (
                                 <Link class="nav-link p-2" href="https://www.instagram.com/">

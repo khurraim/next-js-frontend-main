@@ -9,6 +9,26 @@ const HeroCarousel = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const swiperRef = useRef(null);
 
+  const [isButtonVisible, setIsButtonVisible] = useState(true);
+
+  const handleEnterButtonClick = () => {
+    // Update the local storage to indicate that the button has been clicked
+    localStorage.setItem('buttonClicked', 'true');
+
+    // Update the state to hide the button
+    setIsButtonVisible(false);
+  };
+
+  useEffect(() => {
+    // Check if the button has been clicked in previous sessions
+    const hasButtonBeenClicked = localStorage.getItem('buttonClicked');
+
+    if (hasButtonBeenClicked) {
+      // If the button has been clicked, hide it
+      setIsButtonVisible(false);
+    }
+  }, []);
+
   useEffect(() => {
     // Fetch data from the API
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/form-groups`)
@@ -42,7 +62,9 @@ const HeroCarousel = () => {
                 aria-label={`Slide ${index + 1}`}
               ></button>
             ))}
-            <a href="/products" className="enter">Enter</a>
+            {isButtonVisible && (
+            <a href="/products" onClick={handleEnterButtonClick} className="enter">Enter</a>
+            )}
           </div>
 
           <Swiper

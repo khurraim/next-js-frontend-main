@@ -7,6 +7,15 @@ const NewFooter = () => {
     const [menus, setMenus] = useState([]);
     const [pages, setPages] = useState({});
 
+    const copyRightStyle = {
+        marginTop: '0',
+        marginBottom: '.5rem',
+        fontWeight: '500',
+        lineHeight: '1.2',
+        color: '#333',
+        fontSize: '1.25rem'
+    }
+
     useEffect(() => {
         // Fetch menus when the component mounts
         axios.get(`${process.env.NEXT_PUBLIC_API_URL}/footer`)
@@ -37,17 +46,17 @@ const NewFooter = () => {
     }, []);
 
     return (
-        <footer className="footer ">
+        <footer className="footer bg-white">
         <div className="container-fluid px-lg-5">
             <div className="footer-inner">
-                <div className><h5>Good Girls Gone Bad © 2023</h5></div>
+                <div className><h5 style={copyRightStyle}>Good Girls Gone Bad © 2023</h5></div>
                 <div className><img className="img-fluid" src="images/payment-footer.png" /></div>
                 <div className>
                     {/* <h5>terms &amp; conditions</h5> */}
                     <h5 className="d-flex">
                     {menus.map((menu) => (
                             
-                                <Link className="text-dark text-decoration-none mx-2" href={`/${pages[menu.page_id]?.replace(/\s/g, '')}`}>
+                                <Link className="text-dark text-decoration-none mx-2" style={{fontSize: "1.25rem", color: '#333'}} href={`/${pages[menu.page_id]?.replace(/\s/g, '')}`}>
                                     {menu.title}
                                 </Link>
                             

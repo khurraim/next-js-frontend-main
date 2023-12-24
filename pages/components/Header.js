@@ -131,11 +131,12 @@ const Header = () => {
                             
                             <div className="d-flex align-items-center">
                             {socialIcons.map((icon) => (
-                                <Link className="nav-link mx-2" href={icon.link} target="_blank" rel="noopener noreferrer" key={icon.id}>
+                                <Link className="nav-link mx-2"  style={{padding: '0px'}} href={icon.link} target="_blank" rel="noopener noreferrer" key={icon.id}>
                                     {icon.name === 'Twitter' ? (
                                         <FontAwesomeIcon
                                             icon={faXTwitter}
                                             className="fab fa-twitter text-white "
+                                             
                                         />
                                     ) : icon.name === 'Facebook' ? (
                                         <FontAwesomeIcon

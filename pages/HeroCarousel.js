@@ -19,6 +19,22 @@ const HeroCarousel = () => {
     setIsButtonVisible(false);
   };
 
+  const IndicatorStyle = {
+    position: 'absolute',
+    right: 'unset',
+    bottom: 'unset',
+    left: '10%',
+    paddingTop: '1.25rem',
+    paddingBottom: '1.25rem',
+    color: '#fff',
+    textAlign: 'left',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    margin: '50px 0 0 0',
+    display: 'block'
+  }
+  
+
   useEffect(() => {
     // Check if the button has been clicked in previous sessions
     const hasButtonBeenClicked = localStorage.getItem('buttonClicked');
@@ -50,7 +66,7 @@ const HeroCarousel = () => {
     <main className="main-wrapper">
       <section className="main-banner">
         <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
-          <div className="carousel-indicators">
+          <div className="carousel-indicators" style={IndicatorStyle}>
             {groups.map((_, index) => (
               <button
                 key={index}

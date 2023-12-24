@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AuthUser from "./components/AuthUser";
 import { ToastContainer, toast } from 'react-toastify';
 //import Layout from "./layouts/Layout";
@@ -70,30 +70,51 @@ const Login = () => {
 
   }
 
+  const formFieldStyle = {
+    display: 'block',
+    width: '100%',
+    padding: '.375rem .75rem',
+    fontSize: '1rem',
+    fontWeight: 400,
+    lineHeight: 1.5,
+    color: 'var(--bs-body-color)',
+    WebkitAppearance: 'none',
+    MozAppearance: 'none',
+    appearance: 'none',
+    backgroundColor: 'var(--bs-body-bg)',
+    backgroundClip: 'padding-box',
+    border: 'var(--bs-border-width) solid var(--bs-border-color)',
+    borderRadius: 'var(--bs-border-radius)',
+    transition: 'border-color .15s ease-in-out,box-shadow .15s ease-in-out'
+  };
+  
+
   return (
     <>
     <NewHeader />
     
-    <div className="row justify-content-center mt-5 py-5 mb-5 bg-white">
+    <div className="row justify-content-center mt-5 py-5 bg-white">
       <div className="col-sm-6 mt-5">
-        <div className="card p-4">
-          <h1 className="text-center mb-3">Login </h1>
+        <div className="card p-4" style={{border: '1px solid rgba(0, 0, 0, 0.175)'}}>
+          <h1 className="text-center mb-3" style={{fontSize: '2.5rem', color: 'rgb(51,51,51)'}}>Login </h1>
           <div className="form-group">
-            <label>Email address:</label>
+            <label style={{color: "#333"}}>Email address:</label>
             <input
               type="email"
               className="form-control custom-select"
+              style={formFieldStyle}
               placeholder="Enter email"
               onChange={(e) => setEmail(e.target.value)}
               id="email"
             />
           </div>
           <div className="form-group mt-3">
-            <label>Password:</label>
+            <label style={{color: "#333"}}>Password:</label>
             <input
               type="password"
               className="form-control custom-select"
               placeholder="Enter password"
+              style={formFieldStyle}
               onChange={(e) => setPassword(e.target.value)}
               id="pwd"
             />

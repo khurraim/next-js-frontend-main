@@ -22,6 +22,7 @@ const divStyle = {
   position: 'absolute',
   top: '1px',
   right: '0px',
+  zIndex: '1'
 };
 
 const spanStyle = {
@@ -292,6 +293,7 @@ const Modal = ({ id, onClose }) => {
                         onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}>
                           
 
+                            {model && model.featuredImage ? (
                             <SwiperSlide key={0}>
                               <div className="img-wraper">
                               <img
@@ -300,7 +302,13 @@ const Modal = ({ id, onClose }) => {
                                 alt="Model Image"
                               />
                               </div>
+                            </SwiperSlide>): (
+                              <SwiperSlide key={0}>
+                              <div className="img-wraper">
+                                <img className="img-fluid" src="images/female.jpg"/>
+                              </div>
                             </SwiperSlide>
+                            )}
 
 
                             {model && model.video && (

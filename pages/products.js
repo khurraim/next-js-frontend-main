@@ -345,9 +345,9 @@ const handleCheckboxClick = (category, value) => {
         </div>
       </div>
       <div className="row">
-        <div className="col-lg-8 col-md-10 mx-auto">
+        <div className="col-lg-8 col-md-12 mx-auto">
           <div className="row">
-            <div className="col-lg-3 mt-3">
+            <div className="col-lg-3 col-md-3 mt-3">
               <div id="list1" className="dropdown-check-list" tabIndex={100}>
                 <span className="anchor" onClick={toggleCharacteristicsVisibility}>Characteristics</span>
                 {isCharacteristicsVisible && (
@@ -388,7 +388,7 @@ const handleCheckboxClick = (category, value) => {
                 )}
               </div>
             </div>
-            <div className="col-lg-3 mt-3">
+            <div className="col-lg-3 col-md-3 mt-3">
               <div id="list2" className="dropdown-check-list2" tabIndex={100}>
                 <span className="anchor2"  onClick={toggleLocationsVisibility}>Location</span>
                 {isLocationsVisible && (
@@ -417,7 +417,7 @@ const handleCheckboxClick = (category, value) => {
                 )}
               </div>
             </div>
-            <div className="col-lg-3 mt-3">
+            <div className="col-lg-3 col-md-3 mt-3">
               <div className="selectBox">
                 <div className="selectBox__value" onClick={toggleIncallVisibility}>
                     {selectedIncalls ? (<>
@@ -433,7 +433,7 @@ const handleCheckboxClick = (category, value) => {
                 )}
               </div>
             </div>
-            <div className="col-lg-3 mt-3">
+            <div className="col-lg-3 col-md-3 mt-3">
               <div className="selectBox">
                 <div className="selectBox__value"  onClick={toggleOutcallVisibility} >
                 {selectedOutcall ? (<>
@@ -451,7 +451,7 @@ const handleCheckboxClick = (category, value) => {
               </div>
             </div>
 
-            <div className="text-center mt-5 mb-2" >
+            <div className="text-center mt-lg-5 mt-4 mb-2" >
               <button onClick={handleShowGirls} className="btn-dark-outline py-2 px-5 "><span className="px-4">Show Girls</span></button>
             </div>
 
@@ -528,7 +528,7 @@ const handleCheckboxClick = (category, value) => {
               const modelRates = rates[model.id];
 
             return (
-            <div className="col-lg-5-1 col-md-6" onClick={() => openModal(model.id)} >
+            <div className="col-lg-5-1 col-md-6 col-sm-6" onClick={() => openModal(model.id)} >
             <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" className="product-card">
               <div className="img-wraper">
                 {model.featuredImage ? (

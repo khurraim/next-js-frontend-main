@@ -254,6 +254,14 @@ text-transform: uppercase;
   justify-content: space-between;
   align-items: center;
 }
+.footer h5, .footer h5 a{
+  margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #333;
+    font-size: 1.25rem;
+}
 
 .home-footer {
   position: absolute;
@@ -601,7 +609,7 @@ font-weight: 400;
 line-height: normal;
 letter-spacing: 0.55px;
 text-transform: uppercase;
- padding-bottom: 15px;
+ padding-bottom: 0px;
 }
 .product-card .product-card-body p span{
   margin-right: 10px;
@@ -652,6 +660,7 @@ margin-top: 10px;
     margin: 0.3rem 0.3rem 0.3rem auto;
     color: var(--fb-white-color);
     padding: 0px 5px 8px 6px;
+    border-radius: 0;
 }
 
 .inner-product .product-card .img-wraper img{
@@ -874,7 +883,7 @@ text-transform: uppercase;
   }
   .main-banner .carousel-caption ,
   .main-banner .carousel-indicators{
-    left: 2%;
+    left: 10%;
   }
   .main-banner .enter{
     width: 320px;
@@ -938,4 +947,63 @@ text-transform: uppercase;
 
 .infoGirl-modal  .product-card {
   margin: 77px 10px 0px 10px;
+}
+@media all and (max-width:1098px){
+  .main-banner .carousel-caption h5 {
+    font-size: 46px;
+    margin-bottom: 11rem;
+    position: relative;
+}
+.main-banner .enter{
+  margin-top: 25px;
+}
+  .product-card .img-wraper img{
+    height: 448px;
+  }
+  .header .nav-inner ul{
+    text-align: right;
+  }
+  .header .nav-inner .d-flex.align-items-center, .header .nav-inner .d-flex{
+    justify-content: end;
+  }
+  .footer{
+    margin-bottom: 1rem;
+  }
+  .footer h5, .footer h5 a{
+    color: #000;
+    font-family: Anton;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.45px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+  .footer img{
+    width: 70px;
+  }
+  
+}
+@media all and (max-width:767px){
+  .main-banner .carousel-caption h5 {
+    font-size: 52px;
+  }
+  .infoGirl-modal .modal-body{
+    padding: 0;
+  }
+  .contact-us-modal .modal-content{
+    padding: 0;
+  }
+}
+@media all and (max-width:567px){
+  .main-banner .carousel-caption h5 {
+    font-size: 37px;
+    margin-bottom: 9rem;
+}
+.main-banner .enter{
+  height: 42px;
+  padding: 7px 20px;
+}
+  
 }

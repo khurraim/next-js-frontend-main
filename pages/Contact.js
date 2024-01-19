@@ -100,7 +100,7 @@ function Contact() {
       <main className="main-wrapper innrerPages-waper bg-white">
         <div className="container-lg inner-product">
           <div className="row px-lg-5">
-            <div className="col-lg-7 mx-auto">
+            <div className="col-lg-7 col-md-9 mx-auto">
               <div className="product-card">
                 <div className="img-wraper">
                   <img className="img-fluid" src="images/about.png" />

@@ -199,7 +199,7 @@ const WorkWithUs = () => {
         phone_no: '',
         hairColor: ''
       });
-      toast.success("Model Created Successfully");
+      toast.success("Request Sent Successfully");
       setShowSuccessModal(true);
       // Reset the form validation state
     setFormSubmitted(false);

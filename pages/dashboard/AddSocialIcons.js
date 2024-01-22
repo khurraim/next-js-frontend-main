@@ -31,6 +31,13 @@ function AddSocialIcons() {
             return;
         }
 
+        // Validate link format
+        if (!socialIcons.link.startsWith('https://')) {
+            setValidationError('Link should start with "https://".');
+            toast.error('Link should start with "https://".');
+            return;
+        }
+
         try {
             // Make a POST request to save the social icon
             await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/social-icons`, socialIcons);

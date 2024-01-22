@@ -33,7 +33,21 @@ function EditSocialIcon() {
   };
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
+
+    // Validation
+    if (!socialIcon.name || !socialIcon.link) {
+      toast.error('Both fields are required.');
+      return;
+    }
+
+    // Validate link format
+    if (!socialIcon.link.startsWith('https://')) {
+      toast.error('Link should start with "https://".');
+      return;
+    }
+    
 
     try {
       await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/social-icons/${id}`, socialIcon);

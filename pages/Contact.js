@@ -192,9 +192,9 @@ function Contact() {
                       </div>
                     </div>
                     {Object.values(validationErrors).some((error) => error) && (
-                      <div className="d-flex align-items-center my-3">
+                      <div className="d-flex align-items-center my-3 text-uppercase">
                         <span style={iMarkStyle}>!</span>&nbsp;&nbsp;
-                        Please fill in all the required fields.
+                        <span className='text-danger'>Please fill in all the required fields.</span>
                       </div>
                     )}
                     <div className="col-12">

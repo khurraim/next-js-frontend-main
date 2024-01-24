@@ -92,9 +92,10 @@ const Login = () => {
   return (
     <>
     <NewHeader />
+
     
-    <div className="row justify-content-center mt-5 py-5 bg-white">
-      <div className="col-sm-6 mt-5">
+    <div className="row  mt-5 py-5 bg-white mx-0 login-card-class">
+      <div className="col-sm-6 mt-5 mx-auto">
         <div className="card p-4" style={{border: '1px solid rgba(0, 0, 0, 0.175)'}}>
           <h1 className="text-center mb-3" style={{fontSize: '2.5rem', color: 'rgb(51,51,51)'}}>Login </h1>
           <div className="form-group">

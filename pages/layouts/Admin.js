@@ -125,7 +125,7 @@ const Admin = ({ children }) => {
         <div className="dashboard-main-wrapper">
   {/* navbar */}
   <div className="dashboard-header">
-    <nav className="navbar navbar-expand-lg bg-white fixed-top">
+    <nav className="navbar navbar-expand-md bg-white fixed-top">
       <a className="navbar-brand" href="/dashboard">Models</a>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon" />
@@ -167,8 +167,8 @@ const Admin = ({ children }) => {
   {/* left sidebar */}
   <div className="nav-left-sidebar sidebar-dark">
     <div className="slimScrollDiv" style={{position: 'relative', overflow: 'hidden', width: 'auto', height: '100%'}}><div className="menu-list" style={{overflow: 'hidden', width: 'auto', height: '100%'}}>
-        <nav className="navbar navbar-expand-lg navbar-light">
-          <a className="d-xl-none d-lg-none" href="#">Dashboard</a>
+        <nav className="navbar navbar-expand-md navbar-light">
+          <a className="d-xl-none d-md-none" href="#">Dashboard</a>
           <button className="navbar-toggler d-none" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
           </button>

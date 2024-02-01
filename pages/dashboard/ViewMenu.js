@@ -86,7 +86,7 @@ const ViewMenu = () => {
                                 <td>
                                     {/* Create a link with the formatted URL */}
                                     <Link
-                                        href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/${pages[menu.title]?.replace(/\s/g, '')}`}
+                                        href={`${process.env.NEXT_PUBLIC_FRONTEND_URL}/page/${menu.page_id}`}
                                         target="_blank"
                                         className="btn btn-success"
                                         rel="noopener noreferrer"

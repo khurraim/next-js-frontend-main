@@ -119,7 +119,7 @@ const Header = () => {
  							</li>
                                 {menus.map(menu => (
                                     <li className="nav-item" key={menu.id}>
-                                        <Link className="nav-link" href={`/${pages[menu.page_id]}`}>
+                                        <Link className="nav-link" href={`/page/${menu.page_id}`}>
                                             
                                             {menu.title}
                                         </Link>

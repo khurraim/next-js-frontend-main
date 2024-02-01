@@ -298,18 +298,48 @@ const handleCheckboxClick = (category, value) => {
 
     console.log("Filters are : ", filters);
 
-    await axios.get(apiUrl, { params: filters })
-      .then((response) => {
-        //setModelsData(response.data);
-        if (response.data.length === 0) {
-          setModelsData([]); // Set to an empty array when no models are found
-        } else {
-          setModelsData(response.data);
-        }
-      })
-      .catch((error) => {
-        console.log('Error fetching models:', error);
+    // await axios.get(apiUrl, { params: filters })
+    //   .then((response) => {
+    //     //setModelsData(response.data);
+    //     if (response.data.length === 0) {
+    //       setModelsData([]); // Set to an empty array when no models are found
+    //     } else {
+    //       setModelsData(response.data);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log('Error fetching models:', error);
+    //   });
+
+    try {
+      const response = await axios.get(apiUrl, { params: filters });
+      const filteredModels = response.data;
+  
+      const sortedModels = filteredModels.sort((a, b) => {
+        const priorityOrderMap = {
+          'Top 1': 1,
+          'Top 2': 2,
+          'Top 3': 3,
+          'Top 4': 4,
+          'Top 5': 5,
+          'Normal': 6,
+        };
+      
+        const priorityA = priorityOrderMap[a.priority] || 6; // Default to 6 if not found in the map
+        const priorityB = priorityOrderMap[b.priority] || 6;
+      
+        return priorityA - priorityB;
       });
+
+      setModelsData(sortedModels);
+
+  
+      
+    } catch (error) {
+      console.log('Error fetching models:', error);
+    }
+
+
   };
 
   const openModal = async (modelId) => {

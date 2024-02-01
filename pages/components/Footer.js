@@ -55,7 +55,7 @@ const Footer = () => {
                         <h5>
                         {menus.map((menu) => (
                             
-                                <Link className="text-white text-decoration-none mx-2" style={{fontSize: "1.25rem", color: '#fff'}} href={`/${pages[menu.page_id]?.replace(/\s/g, '')}`}>
+                                <Link className="text-white text-decoration-none mx-2" style={{fontSize: "1.25rem", color: '#fff'}} href={`/page/${menu.page_id}`}>
                                     {menu.title}
                                 </Link>
                             

@@ -55,6 +55,7 @@ const FAQList = () => {
             <th>ID</th>
             <th>Question</th>
             <th>Answer</th>
+            <th>Priority</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -64,6 +65,7 @@ const FAQList = () => {
               <td>{faq.id}</td>
               <td>{faq.question}</td>
               <td>{faq.answer}</td>
+              <td>{faq.priority}</td>
               <td>
                 
                 <Link href={`/dashboard/EditFAQ/${faq.id}`} className="btn btn-primary mx-3">

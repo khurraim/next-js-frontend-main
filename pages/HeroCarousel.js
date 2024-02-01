@@ -3,21 +3,15 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import Link from 'next/link';
 
 const HeroCarousel = () => {
   const [groups, setGroups] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0);
   const swiperRef = useRef(null);
 
-  const [isButtonVisible, setIsButtonVisible] = useState(true);
+  
 
-  const handleEnterButtonClick = () => {
-    // Update the local storage to indicate that the button has been clicked
-    localStorage.setItem('buttonClicked', 'true');
-
-    // Update the state to hide the button
-    setIsButtonVisible(false);
-  };
 
   const IndicatorStyle = {
     position: 'absolute',
@@ -35,15 +29,7 @@ const HeroCarousel = () => {
   }
   
 
-  useEffect(() => {
-    // Check if the button has been clicked in previous sessions
-    const hasButtonBeenClicked = localStorage.getItem('buttonClicked');
-
-    if (hasButtonBeenClicked) {
-      // If the button has been clicked, hide it
-      setIsButtonVisible(false);
-    }
-  }, []);
+  
 
   useEffect(() => {
     // Fetch data from the API
@@ -78,9 +64,9 @@ const HeroCarousel = () => {
                 aria-label={`Slide ${index + 1}`}
               ></button>
             ))}
-            {isButtonVisible && (
-            <a href="/products" onClick={handleEnterButtonClick} className="enter">Enter</a>
-            )}
+            
+            <a href="/products"  className="enter">Enter</a>
+          
           </div>
 
           <Swiper
@@ -91,14 +77,18 @@ const HeroCarousel = () => {
             onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
           >
             {groups.map((group, index) => (
+              
               <SwiperSlide key={group.id}>
+                <a href={group.link} target="_blank">
                 <div className={`carousel-item ${activeSlide === index ? 'active' : ''}`}>
                   <img src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${group.image}`} className="d-block w-100" alt={`Slide ${index + 1}`} />
                   <div className="carousel-caption">
                     <h5>{group.title}<span>{group.subtitle}</span></h5>
                   </div>
                 </div>
+                </a>
               </SwiperSlide>
+              
             ))}
           </Swiper>
         </div>

@@ -22,7 +22,9 @@ const NewComponent = () => {
     height: '',
     phone_no: '',
     hairColor: '',
-    bookLink: ''
+    bookLink: '',
+    status: '',
+    priority: '',
   });
 
   const [loading, setLoading] = useState(true);
@@ -181,6 +183,12 @@ const NewComponent = () => {
         formDataToSend.append('bookLink', formData.bookLink);
       }
 
+      formDataToSend.append('status', 'deactivated');
+      
+      if(formData.priority) {
+        formDataToSend.append('priority', formData.priority);
+      }
+
       // Appending Gallery Files
       selectedFiles.forEach((file) => {
         formDataToSend.append('images[]', file);
@@ -212,7 +220,8 @@ const NewComponent = () => {
         height: '',
         phone_no: '',
         hairColor: '',
-        bookLink: ''
+        bookLink: '',
+        priority: ''
       });
       toast.success("Model Created Successfully");
     } catch (error) {
@@ -357,6 +366,22 @@ const NewComponent = () => {
                                 value={formData.bookLink}
                                 onChange={handleChange}
                             />
+                        </div>
+
+                        <div  className='form-group' >
+                            <label className='form-label'>Priority </label>
+                            <select 
+                            name="priority"
+                            className='form-control'
+                            value={formData.priority} // Set the selected priority
+                            onChange={handleChange}>
+                              <option>Top 1</option>
+                              <option>Top 2</option>
+                              <option>Top 3</option>
+                              <option>Top 4</option>
+                              <option>Top 5</option>
+                              <option>Normal</option>
+                            </select>
                         </div>                        
 
                     </div>

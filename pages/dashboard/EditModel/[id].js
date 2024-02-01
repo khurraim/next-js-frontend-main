@@ -244,6 +244,7 @@ const EditModel = () => {
       formData.append('phone_no', model.phone_no);
       formData.append('hairColor', model.hairColor);
       formData.append('bookLink', model.bookLink);
+      formData.append('priority', model.priority);
       
       // Append featured image only if a new image is selected
       if (imageFile) {

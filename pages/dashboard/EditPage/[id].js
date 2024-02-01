@@ -7,8 +7,6 @@ import axios from "axios";
 
 function EditPage({page})
 {
-    // const router = useRouter();
-    // const { id } = router.query;
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -41,33 +39,7 @@ function EditPage({page})
         setDescription(page.description || '');
       }, [page]);
 
-    // useEffect(() => {
-    //     if(id)
-    //     {
-    //         axios.get(`http://127.0.0.1:8000/api/models/${id}`)
-    //         .then((response) => {
-    //             setPage(response.data);
-    //         })
-    //         .catch((error) => {console.log(error);})
-    //     }
-    // }, [id]);
-
-    const handleSave = async () => {
-        try {
-
-            const fileName = title.replace(/\s+/g, "");
-          // Update the title and description using the API
-          await axios.post('/api/editFile', {
-            fileName,
-            title,
-            description,
-          });
-          toast.success('File content updated successfully!');
-        } catch (error) {
-          console.error('Error updating file:', error);
-          toast.error('Error updating file content');
-        }
-      };
+    
 
     const handleEdit = () =>
     {
@@ -82,10 +54,10 @@ function EditPage({page})
         })
         .catch((error) => {
             console.error('Error updating Page:', error);
-            toast.error("Error updating Page. Title and description is required. Title should be unique");
+            toast.error("Error updating Page.");
         });
 
-        handleSave();
+        //handleSave();
     }
 
     return (
@@ -109,14 +81,7 @@ function EditPage({page})
                                 /> 
                             </div>
 
-                            {/* <div className="form-group">
-                                <label className="form-label">Description</label>
-                                <textarea
-                                className="form-control" 
-                                value={description} 
-                                onChange={(e) => setDescription(e.target.value)}
-                                /> 
-                            </div> */}
+                            
 
                             <div className="form-group">
                                             {editorLoaded ? (
@@ -157,13 +122,13 @@ function EditPage({page})
 EditPage.getInitialProps = async ({ query }) => {
     const { id } = query;
   
-    // Fetch the category data based on the ID from the API
+    // Fetch the page data based on the ID from the API
     try {
       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/pages/${id}`);
       const page = response.data;
       return { page };
     } catch (error) {
-      console.error('Error fetching category:', error);
+      console.error('Error fetching page:', error);
       return { page: {} };
     }
   };

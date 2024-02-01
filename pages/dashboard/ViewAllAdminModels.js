@@ -76,7 +76,39 @@ const YourComponentTable = () => {
     }
   },[records]);
 
+  const handleActivation = async (id) => {
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/ActivateModel/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        setRecords((prevRecords) =>
+        prevRecords.map((record) =>
+          record.id === id ? { ...record, status: 'activated' } : record
+        )
+      );
+        toast.success("Model activated successfully");
+      })
+      .catch((error)=>{
+        console.log("Error approving model : ", error);
+        toast.error("Error Approving Model");
+      });
+  };
 
+  const handleDeactivation = async (id) => {
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/DeactivateModel/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        setRecords((prevRecords) =>
+        prevRecords.map((record) =>
+          record.id === id ? { ...record, status: 'deactivated' } : record
+        )
+      );
+        toast.success("Model activated successfully");
+      })
+      .catch((error)=>{
+        console.log("Error approving model : ", error);
+        toast.error("Error Approving Model");
+      });
+  }; 
 
   const handleDelete = (id) => {
     // Make a DELETE request to delete the model with the specified ID
@@ -92,6 +124,8 @@ const YourComponentTable = () => {
         toast.error('Error Deleting Model');
       });
   };
+
+  
 
   return (
     <Admin>
@@ -114,9 +148,12 @@ const YourComponentTable = () => {
                 
                 <th>Age</th>
                 <th>Phone No </th>
+                <th>Status</th>
+                <th>Priority</th>
                 <th>View Details</th>
                 <th>Edit Models</th>
                 <th>Delete Model</th>
+                <th>Activate/Deactivate</th>
 
               </tr>
             </thead>
@@ -132,6 +169,10 @@ const YourComponentTable = () => {
                   <td>{record.age}</td>
 
                   <td>{record.phone_no}</td>
+
+                  <td>{record.status}</td>
+
+                  <td>{record.priority}</td>
                 
                  <td>
                     <Link href={`/dashboard/ViewDetails/${record.id}`} className="btn btn-success w-100 mb-3">
@@ -152,6 +193,29 @@ const YourComponentTable = () => {
                       Delete Model
                     </button>
                   </td>
+
+                  <td>
+
+                    {record.status === 'activated' && (
+                      <button
+                    className='btn btn-info w-100 mb-3'
+                    onClick={() => handleDeactivation(record.id)}
+                    >
+                      Deactivate Model
+                    </button>
+                    )}
+
+                    {record.status === 'deactivated' && (
+                      <button
+                    className='btn btn-info w-100 mb-3'
+                    onClick={() => handleActivation(record.id)}
+                    >
+                      Activate Model
+                    </button>
+                    )}
+                    
+                  </td>
+
                 </tr>
               ))}
             </tbody>

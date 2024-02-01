@@ -10,12 +10,24 @@ const FAQCollapsibleList = () => {
   const [openItem, setOpenItem] = useState(null);
 
   useEffect(() => {
-    // Fetch FAQs from the API when the component mounts
+
     const fetchFAQs = async () => {
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/faqs`);
         const data = await response.json();
-        setFAQs(data);
+
+        // Define the priority order
+        const priorityOrder = ['Top 1', 'Top 2', 'Top 3', 'Top 4', 'Top 5', 'Normal'];
+
+        // Sort FAQs based on the priority order
+        const sortedFaqs = data.sort((a, b) => {
+          const priorityA = priorityOrder.indexOf(a.priority);
+          const priorityB = priorityOrder.indexOf(b.priority);
+
+          return priorityA - priorityB;
+        });
+
+        setFAQs(sortedFaqs);
       } catch (error) {
         console.error('Error fetching FAQs:', error);
       }

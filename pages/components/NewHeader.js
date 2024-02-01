@@ -1,15 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
-    faTwitter,
-    faFacebook, 
-    faXTwitter,
-    faInstagram, 
-    faSnapchat, 
-    faLinkedin, 
-    faPinterest,
-} from "@fortawesome/free-brands-svg-icons";
+
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as SolidIcons from '@fortawesome/free-solid-svg-icons';
+import * as BrandIcons from '@fortawesome/free-brands-svg-icons';
 
 import Link from "next/link";
 
@@ -28,6 +23,10 @@ const NewHeader = () => {
     const [footerMenus, setFooterMenus] = useState([]);
     const [footerPages, setFooterPages] = useState({});
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    // Font Awesome Icons
+    const solidIcons = Object.keys(SolidIcons).map((icon) => ({ name: icon, icon: SolidIcons[icon] }));
+    const brandIcons = Object.keys(BrandIcons).map((icon) => ({ name: icon, icon: BrandIcons[icon] }));
 
     useEffect(() => {
         axios.get(`${process.env.NEXT_PUBLIC_API_URL}/menu`)
@@ -133,43 +132,26 @@ const NewHeader = () => {
 						</ul>
 						<a class="navbar-brand d-none d-lg-block" href="/">GOOD GIRLS <span>GONE BAD</span></a>
 						<div class="d-flex">
-                            {socialIcons.map((icon)=> (
-                                <Link class="nav-link p-2" href="https://www.instagram.com/">
-                                    {icon.name === 'Twitter' ? (
-                                        <FontAwesomeIcon
-                                            icon={faXTwitter}
-                                            className="fab fa-twitter "
-                                        />
-                                    ) : icon.name === 'Facebook' ? (
-                                        <FontAwesomeIcon
-                                            icon={faFacebook}
-                                            className="fab fa-facebook "
-                                        />
-                                    ) : icon.name === 'Instagram' ? (
-                                        <FontAwesomeIcon
-                                            icon={faInstagram}
-                                            className="fab fa-instagram "
-                                        />
-                                    ) : icon.name === 'Snapchat' ? (
-                                        <FontAwesomeIcon
-                                            icon={faSnapchat}
-                                            className="fab fa-snapchat "
-                                        />
-                                    ) : icon.name === 'Linkedin' ? (
-                                        <FontAwesomeIcon
-                                            icon={faLinkedin}
-                                            className="fab fa-snapchat "
-                                        />
-                                    ) : icon.name === 'Pinterest' ? (
-                                        <FontAwesomeIcon
-                                            icon={faPinterest}
-                                            className="fab fa-snapchat "
-                                        /> ) :
-                                        null
-                                    }
-                                    {/* <i class="fa-brands fa-x-twitter"></i> */}
+                             {socialIcons.map((icon)=> (
+                                 // Map over the combined array of solidIcons and brandIcons
+                                    <Link className="nav-link p-2" key={icon.id} href={icon.link}>
+                                    
+                                    {[...solidIcons, ...brandIcons].map((item, index) => {
+                                        // Check if icon_class matches the current item's name
+                                        if (icon.icon_class === item.name) {
+                                        // Return the FontAwesomeIcon component
+                                        return <FontAwesomeIcon key={index} icon={item.icon} />;
+                                        }
+                                        // If there is no match, return null or an empty fragment
+                                        return null;
+                                    })}
+                                    
                                 </Link>
-                            ))}
+
+                                
+                            ))} 
+
+
 						{/* <a class="nav-link p-2" href="https://www.instagram.com/">
                             <i class="fa-brands fa-x-twitter"></i>
                         </a>

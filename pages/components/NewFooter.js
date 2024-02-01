@@ -56,7 +56,8 @@ const NewFooter = () => {
                     <h5 className="d-flex">
                     {menus.map((menu) => (
                             
-                                <Link className="text-dark text-decoration-none mx-2" style={{fontSize: "1.25rem", color: '#333'}} href={`/${pages[menu.page_id]?.replace(/\s/g, '')}`}>
+                                // <Link className="text-dark text-decoration-none mx-2" style={{fontSize: "1.25rem", color: '#333'}} href={`/${pages[menu.page_id]?.replace(/\s/g, '')}`}>
+                                <Link className="text-dark text-decoration-none mx-2" style={{fontSize: "1.25rem", color: '#333'}} href={`/page/${menu.page_id}`}>
                                     {menu.title}
                                 </Link>
                             

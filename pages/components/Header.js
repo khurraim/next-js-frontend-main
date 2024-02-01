@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from 'axios';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
-    faTwitter,
-    faFacebook, 
-    faInstagram, 
-    faSnapchat, 
-    faXTwitter,
-    faLinkedin, 
-    faPinterest,
-} from "@fortawesome/free-brands-svg-icons";
 
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+
+ import { faBars } from "@fortawesome/free-solid-svg-icons";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as SolidIcons from '@fortawesome/free-solid-svg-icons';
+import * as BrandIcons from '@fortawesome/free-brands-svg-icons';
 
 const Header = () => {
     const [menus, setMenus] = useState([]);
@@ -23,6 +18,10 @@ const Header = () => {
     const [footerMenus, setFooterMenus] = useState([]);
     const [footerPages, setFooterPages] = useState({});
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    // Font Awesome Icons
+    const solidIcons = Object.keys(SolidIcons).map((icon) => ({ name: icon, icon: SolidIcons[icon] }));
+    const brandIcons = Object.keys(BrandIcons).map((icon) => ({ name: icon, icon: BrandIcons[icon] }));
 
     useEffect(() => {
         axios.get(`${process.env.NEXT_PUBLIC_API_URL}/menu`)
@@ -131,40 +130,19 @@ const Header = () => {
                             
                             <div className="d-flex align-items-center">
                             {socialIcons.map((icon) => (
-                                <Link className="nav-link mx-2"  style={{padding: '0px'}} href={icon.link} target="_blank" rel="noopener noreferrer" key={icon.id}>
-                                    {icon.name === 'Twitter' ? (
-                                        <FontAwesomeIcon
-                                            icon={faXTwitter}
-                                            className="fab fa-twitter text-white "
-                                             
-                                        />
-                                    ) : icon.name === 'Facebook' ? (
-                                        <FontAwesomeIcon
-                                            icon={faFacebook}
-                                            className="fab fa-facebook text-white "
-                                        />
-                                    ) : icon.name === 'Instagram' ? (
-                                        <FontAwesomeIcon
-                                            icon={faInstagram}
-                                            className="fab fa-instagram text-white "
-                                        />
-                                    ) : icon.name === 'Snapchat' ? (
-                                        <FontAwesomeIcon
-                                            icon={faSnapchat}
-                                            className="fab fa-snapchat text-white "
-                                        />
-                                    ) : icon.name === 'Linkedin' ? (
-                                        <FontAwesomeIcon
-                                            icon={faLinkedin}
-                                            className="fab fa-snapchat text-white "
-                                        />
-                                    ) : icon.name === 'Pinterest' ? (
-                                        <FontAwesomeIcon
-                                            icon={faPinterest}
-                                            className="fab fa-snapchat text-white "
-                                        /> ) :
-                                        null
-                                    }
+                                
+                                <Link className="nav-link p-2" key={icon.id} href={icon.link}>
+                                    
+                                    {[...solidIcons, ...brandIcons].map((item, index) => {
+                                        // Check if icon_class matches the current item's name
+                                        if (icon.icon_class === item.name) {
+                                        // Return the FontAwesomeIcon component
+                                        return <FontAwesomeIcon key={index} icon={item.icon} />;
+                                        }
+                                        // If there is no match, return null or an empty fragment
+                                        return null;
+                                    })}
+                                    
                                 </Link>
                             ))}
                             </div>

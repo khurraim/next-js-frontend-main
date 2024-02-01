@@ -6,6 +6,7 @@ const CreateFAQForm = () => {
   const [formData, setFormData] = useState({
     question: '',
     answer: '',
+    priority: ''
   });
 
   const handleChange = (e) => {
@@ -34,6 +35,7 @@ const CreateFAQForm = () => {
         setFormData({
             question: '',
             answer: '',
+            priority: '',
           });
       } else {
         console.error('Failed to create FAQ');
@@ -71,6 +73,24 @@ const CreateFAQForm = () => {
             onChange={handleChange}
           ></textarea>
         </div>
+
+        <div className='form-group'>
+          <label className='form-label'>Priority</label>
+          <select 
+          name="priority"
+          className='form-control'
+           value={formData.priority} // Set the selected priority
+           onChange={handleChange}>
+            <option>Top 1</option>
+            <option>Top 2</option>
+            <option>Top 3</option>
+            <option>Top 4</option>
+            <option>Top 5</option>
+            <option>Normal</option>
+          </select>
+        </div>
+
+
         <div>
           <button className='btn btn-primary' type="submit">Create FAQ</button>
         </div>

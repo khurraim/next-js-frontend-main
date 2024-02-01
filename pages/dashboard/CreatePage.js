@@ -12,6 +12,7 @@ export default function CreateFileForm() {
   const [editorLoaded, setEditorLoaded] = useState(false);
   const { CKEditor, ClassicEditor } = editorRef.current || {};
 
+  // Loading Ck Editor
   useEffect(() => {
     // Dynamically load CKEditor and ClassicEditor
     import('@ckeditor/ckeditor5-react')
@@ -27,49 +28,38 @@ export default function CreateFileForm() {
       });
   }, []);
 
-  const generateFile = async () => {
+  const createPage = async () => {
+
+    // Check if title is empty
     if (title.trim() === '') {
       toast.error('Title cannot be empty');
       return;
     }
   
+    // Check if description is empty
     if (description.trim() === '') {
       toast.error('Description cannot be empty');
       return;
     }
     
-    try {
-      
-        // Send a POST request to the server-side route to create the file
-        await axios.post('/api/generateFile', { title, description });
-        
-        // Optionally, show a success message
-        toast.success('Page Created Successfully');
-  
-        router.push('/dashboard/ViewPages');
-        generateRecord();
-
-    } catch (error) {
-      console.error('Error creating file:', error);
-      // Optionally, show an error message
-      toast.error("Error creating page");
-    }
-
-    
-  };
-
-  const generateRecord = async () => {
+    // Save Record in database
     try
     {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/pages`, {title, description});
-        toast.success('Record Saved Successfully');
+        const response =  axios.post(`${process.env.NEXT_PUBLIC_API_URL}/pages`, {title, description});
+        toast.success('Page Saved Successfully');
     }
     catch(error)
     {
       console.log("Error Creating File: ")
       toast.error('Error Saving Record');
     }
-  }
+
+    
+  };
+
+  
+   
+  
 
   return (
     <Admin>
@@ -118,7 +108,7 @@ export default function CreateFileForm() {
               <button
                 className='btn btn-primary'
                 type='button'
-                onClick={generateFile}
+                onClick={createPage}
               >
                 Create Page
               </button>

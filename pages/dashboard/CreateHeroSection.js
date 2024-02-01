@@ -4,7 +4,14 @@ import axios from 'axios';
 import {toast} from 'react-toastify'
 
 function CreateHeroSection() {
-  const [formGroups, setFormGroups] = useState([{ title: '', subtitle: '', image: null, previewImage: '' }]);
+  const [formGroups, setFormGroups] = useState([
+      { 
+        title: '', 
+        subtitle: '', 
+        image: null, 
+        previewImage: '' 
+      }
+    ]);
 
   const handleAddGroup = () => {
     setFormGroups([...formGroups, { title: '', subtitle: '', image: null, previewImage: '' }]);
@@ -31,11 +38,27 @@ function CreateHeroSection() {
     }
   };
 
+  // const handleInputChange = (index, field, value) => {
+  //   const updatedGroups = [...formGroups];
+  //   updatedGroups[index][field] = value;
+  //   setFormGroups(updatedGroups);
+  // };
+
   const handleInputChange = (index, field, value) => {
     const updatedGroups = [...formGroups];
-    updatedGroups[index][field] = value;
+  
+    // Validate link field
+    if (field === 'link' && value && !value.startsWith('https://')) {
+      // If the link doesn't start with 'https://', prepend it
+      updatedGroups[index][field] = `https://${value}`;
+    } else {
+      // Otherwise, update the value as usual
+      updatedGroups[index][field] = value;
+    }
+  
     setFormGroups(updatedGroups);
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,19 +70,20 @@ function CreateHeroSection() {
     const apiRequests = [];
 
     // Check if any title or subtitle fields are empty
-    const isAnyEmpty = formGroups.some(group => !group.title || !group.subtitle);
+    const isAnyEmpty = formGroups.some(group => !group.title || !group.subtitle || !group.image);
 
     if (isAnyEmpty) {
-      toast.error('Title and Subtitle fields are required.'); // You can replace this with your preferred error handling or use 'react-toastify' for error messages.
+      toast.error('Title, Subtitle and Image fields are required.'); 
       return;
     }
 
     // Send each group to your Laravel backend to save
     for (const group of formGroups) {
       const formData = new FormData();
-      //formData.append('copyright_text', group.title);
+      
       formData.append('title', group.title);
       formData.append('subtitle', group.subtitle);
+      formData.append('link', group.link);
 
       // Append the image only if it's not null
       if (group.image) {
@@ -118,6 +142,18 @@ function CreateHeroSection() {
                     onChange={(e) => handleInputChange(index, 'subtitle', e.target.value)}
                   />
                 </div>
+
+                <div className='form-group'>
+                  <label className='form-label'>Enter Link: </label>
+                  <input
+                    type="text"
+                    className='form-control'
+                    placeholder="Link"
+                    value={group.link}
+                    onChange={(e) => handleInputChange(index, 'link', e.target.value)}
+                  />
+                </div>
+
 
                 <div className='form-group'>
                   <label className='form-label'>Background Image : </label>

@@ -13,6 +13,7 @@ const EditHeroSection = () => {
     subtitle: '',
     image: null,
     previewImage: '',
+    link: ''
   });
 
   useEffect(() => {
@@ -20,12 +21,13 @@ const EditHeroSection = () => {
     if (id) {
       axios.get(`${process.env.NEXT_PUBLIC_API_URL}/form-groups/${id}`)
         .then((response) => {
-          const { title, subtitle, image } = response.data;
+          const { title, subtitle,link, image } = response.data;
           setFormData({
             title,
             subtitle,
             image: null, // Initialize as null because we don't want to show existing image on load
             previewImage: `${process.env.NEXT_PUBLIC_STORAGE_URL}/${image}`,
+            link: link || ''
           });
         })
         .catch((error) => {
@@ -36,7 +38,17 @@ const EditHeroSection = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    //setFormData({ ...formData, [name]: value });
+
+    // Validate link field
+    if (name === 'link' && value && !value.startsWith('https://')) {
+      // If the link doesn't start with 'https://', prepend it
+      setFormData({ ...formData, [name]: `https://${value}` });
+    } else {
+      // Otherwise, update the value as usual
+      setFormData({ ...formData, [name]: value });
+    }
+
   };
 
   const handleImageChange = (e) => {
@@ -61,18 +73,28 @@ const EditHeroSection = () => {
     const updatedData = new FormData();
     updatedData.append('title', formData.title);
     updatedData.append('subtitle', formData.subtitle);
+    updatedData.append('link', formData.link);
 
     if (formData.image) {
       updatedData.append('image', formData.image);
     }
 
-    if(formData.image.type != 'image/png' &&
-       formData.image.type != 'image/jpeg' && 
-       formData.image.type != 'image/jpg')
-    {
+    // if(formData.image.type != 'image/png' &&
+    //    formData.image.type != 'image/jpeg' && 
+    //    formData.image.type != 'image/jpg')
+    // {
+    //   console.log(formData.image.type);
+    //   toast.error("Only PNG, JPG & JPEG Images Allowed");
+    // }
+
+    if (formData.image && 
+      (formData.image.type !== 'image/png' &&
+       formData.image.type !== 'image/jpeg' && 
+       formData.image.type !== 'image/jpg')) {
       console.log(formData.image.type);
       toast.error("Only PNG, JPG & JPEG Images Allowed");
     }
+  
 
     try {
       // Send a PUT request to update the record
@@ -122,6 +144,18 @@ const EditHeroSection = () => {
               id="subtitle"
               name="subtitle"
               value={formData.subtitle}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="link">Link</label>
+            <input
+              type="text"
+              className="form-control"
+              id="link"
+              name="link"
+              value={formData.link}
               onChange={handleInputChange}
               required
             />

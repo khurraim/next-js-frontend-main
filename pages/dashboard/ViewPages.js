@@ -34,27 +34,27 @@ function ViewPages({ files }) {
   const excludedFolders = ['components', 'layouts', 'api', 'dashboard']; // Add folder names to exclude
   const excludedFileNames = ['_app.js', '_document.js', 'login.js', 'index.js']; // Add specific file names to exclude
 
-  const deleteFile = async (fileName) => {
+  // const deleteFile = async (fileName) => {
     
-    const confirmed = window.confirm(`Are you sure you want to delete the file "${fileName}"?`);
-    if (!confirmed) {
-      return;
-    }
+  //   const confirmed = window.confirm(`Are you sure you want to delete the file "${fileName}"?`);
+  //   if (!confirmed) {
+  //     return;
+  //   }
     
-    try {
-      // Send a POST request to the deleteFile API route
-      await axios.post('/api/deleteFile', { fileName });
+  //   try {
+  //     // Send a POST request to the deleteFile API route
+  //     await axios.post('/api/deleteFile', { fileName });
 
-      // Update the list of deleted files
-      setDeletedFiles([...deletedFiles, fileName]);
+  //     // Update the list of deleted files
+  //     setDeletedFiles([...deletedFiles, fileName]);
 
-      toast.success("Page deleted successfully");
+  //     toast.success("Page deleted successfully");
 
-    } catch (error) {
-      console.error('Error deleting file:', error);
-      toast.error("Error deleting page");
-    }
-  };
+  //   } catch (error) {
+  //     console.error('Error deleting file:', error);
+  //     toast.error("Error deleting page");
+  //   }
+  // };
 
 
 
@@ -65,7 +65,7 @@ function ViewPages({ files }) {
       toast.success('Page Deleted Successfully');
   
       // After successful deletion of the record, delete the file
-      deleteFile(fileName);
+      //deleteFile(fileName);
     } catch (error) {
       console.error('Error deleting Page:', error);
       toast.error('Error Deleting Page. Check if the page is included in some menu.');

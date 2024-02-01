@@ -35,29 +35,32 @@ const FormGroup = () => {
   return (
     <Admin>
         <div className='container-fluid my-5'>
-            <table className="table table-bordered">
+            <table className="table table-bordered ">
                 <thead>
                     <tr>
-                    <th>Title</th>
-                    <th>Subtitle</th>
                     <th>Image</th>
+                    <th>Title</th>
+                    <th>SubTitle</th>
+                    <th>Link</th>
                     <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {groups.map((group) => (
                     <tr key={group.id}>
-                        <td>{group.title}</td>
-                        <td>{group.subtitle}</td>
-                        <td>
+                      <td>
                         {group.image && (
                             <img
                             src={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${group.image}`}
                             alt="Group Image"
-                            style={{ maxWidth: '100px', height: 'auto' }}
+                            className='img-fluid w-100 '
+                            style={{ height: 'auto', maxWidth: '300px' }}
                             />
                         )}
                         </td>
+                        <td>{group.title}</td>
+                        <td>{group.subtitle}</td>
+                        <td>{group.link}</td>
                         <td>
                             
                             <Link href={`/dashboard/EditHeroSection/${group.id}`} className="btn btn-primary mx-3">

@@ -40,7 +40,10 @@ function EditSocialIcon() {
 
   const handleIconClick = (icon) => {
     setSelectedIcon(icon);
+    setSocialIcon({ ...socialIcon, icon_class: icon?.name || '' });
   };
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

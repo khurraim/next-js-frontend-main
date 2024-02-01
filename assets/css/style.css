@@ -1015,3 +1015,7 @@ text-transform: uppercase;
   flex-direction: column;
   justify-content: center;
 }
+
+.page-generate {
+  min-height: calc(100vh - 70px);
+}

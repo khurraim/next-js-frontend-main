@@ -167,7 +167,7 @@ const WorkWithUs = () => {
       
     
   
-     
+     formDataToSend.append('priority', 'normal');
 
       // Appending Gallery Files
       selectedFiles.forEach((file) => {

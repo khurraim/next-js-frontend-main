@@ -11,6 +11,9 @@ const EditModel = () => {
 
   const [services, setServices] = useState([]);
   const [newService, setNewService] = useState({ name: '' });
+
+  const [priority, setPriority] = useState('');
+
   
   const [rates, setRates] = useState([]);
   const [newRate, setNewRate] = useState({
@@ -36,6 +39,7 @@ const EditModel = () => {
       //axios.get(`http://127.0.0.1:8000/api/models/${id}`)
         .then((response) => {
           setModel(response.data);
+          setPriority(response.data.priority); // Set the initial value of priority
           setLoading(false);
         });
     }
@@ -244,7 +248,7 @@ const EditModel = () => {
       formData.append('phone_no', model.phone_no);
       formData.append('hairColor', model.hairColor);
       formData.append('bookLink', model.bookLink);
-      formData.append('priority', model.priority);
+      formData.append('priority', priority);
       
       // Append featured image only if a new image is selected
       if (imageFile) {
@@ -449,6 +453,25 @@ const EditModel = () => {
                 onChange={(e) => handleChange(e, 'bookLink')}
               />
             </div>
+
+            <div className='form-group'>
+            <label className='form-label'>Priority</label>
+            <select
+              className='form-control'
+              name='priority'
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+            >
+              <option value=''>Select Priority</option>
+              <option value='Top 1'>Top 1</option>
+              <option value='Top 2'>Top 2</option>
+              <option value='Top 3'>Top 3</option>
+              <option value='Top 4'>Top 4</option>
+              <option value='Top 5'>Top 5</option>
+              <option value='normal'>Normal</option>
+            </select>
+          </div>
+
 
 
           </div>

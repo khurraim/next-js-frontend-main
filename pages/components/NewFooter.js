@@ -50,7 +50,7 @@ const NewFooter = () => {
         <div className="container-fluid px-lg-5">
             <div className="footer-inner">
                 <div className><h5 style={copyRightStyle}>Good Girls Gone Bad © 2023</h5></div>
-                <div className><img className="img-fluid" src="images/payment-footer.png" /></div>
+                <div className><img className="img-fluid" src="/images/payment-footer.png" /></div>
                 <div className>
                     {/* <h5>terms &amp; conditions</h5> */}
                     <h5 className="d-flex">

@@ -3,6 +3,7 @@ import axios from 'axios';
 import Admin from '../layouts/Admin';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
+import Pagination from '../pagination';
 
 const YourComponentTable = () => {
   const [records, setRecords] = useState([]);
@@ -10,6 +11,20 @@ const YourComponentTable = () => {
   const [services, setServices] = useState({}); 
   const [rates, setRates] = useState({});
   //const [stats, setStats] = useState({});
+
+  const [paginate, setPaginate] = useState([]);
+  const [offset, setOffset] = useState(1);
+
+  const pageLimit = 5;
+
+  useEffect(() => {
+    //setIsLoading(true);
+    //const sortedOrders = orders?.sort((a, b) => b.id - a.id);
+    const startIndex = (offset - 1) * pageLimit;
+    setPaginate(records?.slice(startIndex , startIndex  + pageLimit));
+    //setIsLoading(false);
+  }, [offset, records]);
+
 
   useEffect(() => {
     // Fetch records when the component mounts
@@ -158,7 +173,7 @@ const YourComponentTable = () => {
               </tr>
             </thead>
             <tbody>
-              {records.map((record) => (
+              {paginate.map((record) => (
                 <tr key={record.id}>
                   
                  
@@ -220,6 +235,13 @@ const YourComponentTable = () => {
               ))}
             </tbody>
           </table>
+          <Pagination
+                total={records?.length}
+                current={offset}
+                pageSize={pageLimit}
+                onChange={(val) => setOffset(val)}
+                showLessItems
+              />
           </div>
         )}
       </div>

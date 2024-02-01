@@ -3,26 +3,13 @@ import axios from 'axios';
 import Admin from '../layouts/Admin';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
-import Pagination from '../pagination';
 
 const YourComponentTable = () => {
   const [records, setRecords] = useState([]);
   const [loading, setLoading] = useState(true);
   const [services, setServices] = useState({}); 
   const [rates, setRates] = useState({});
-  const [paginate, setPaginate] = useState([]);
-  const [offset, setOffset] = useState(1);
-
-  const pageLimit = 7;
-
-  useEffect(() => {
-    //setIsLoading(true);
-    //const sortedOrders = orders?.sort((a, b) => b.id - a.id);
-    const startIndex = (offset - 1) * pageLimit;
-    setPaginate(records?.slice(startIndex , startIndex  + pageLimit));
-    //setIsLoading(false);
-  }, [offset, records]);
-
+  //const [stats, setStats] = useState({});
 
   useEffect(() => {
     // Fetch records when the component mounts
@@ -37,6 +24,57 @@ const YourComponentTable = () => {
         setLoading(false);
       });
   }, []);
+
+ 
+  // Fetching Service
+  // useEffect(() => {
+  //   // Fetch services for each model
+  //   const fetchServices = async () => {
+  //     const servicesData = {};
+
+  //     for (const record of records) {
+  //       try {
+  //         const response = await axios.get(
+  //           `${process.env.NEXT_PUBLIC_API_URL}/models/services/${record.id}`
+  //         ); // Replace with your service API endpoint
+  //         servicesData[record.id] = response.data.services;
+  //       } catch (error) {
+  //         console.error('Error fetching services:', error);
+  //         servicesData[record.id] = [];
+  //       }
+  //     }
+  //     setServices(servicesData);
+  //   };
+
+  //   if (records.length > 0) {
+  //     fetchServices();
+  //   }
+  // }, [records]);
+
+  // // Fetching Rates
+  // useEffect(()=>{
+  //   // Fetch services for each model
+  //   const fetchRates = async () => {
+  //     const ratesData = {};
+
+  //     for (const record of records) {
+  //       try {
+  //         const response = await axios.get(
+  //           `${process.env.NEXT_PUBLIC_API_URL}/models/rates/${record.id}`
+  //         ); // Replace with your service API endpoint
+  //         ratesData[record.id] = response.data.rates;
+  //       } catch (error) {
+  //         console.error('Error fetching services:', error);
+  //         ratesData[record.id] = [];
+  //       }
+  //     }
+  //     setRates(ratesData);
+  //   };
+
+  //   if (records.length > 0) {
+  //     fetchRates();
+  //   }
+  // },[records]);
 
   const approveModel = (id) => {
     
@@ -106,7 +144,7 @@ const YourComponentTable = () => {
               </tr>
             </thead>
             <tbody>
-              {paginate.map((record) => (
+              {records.map((record) => (
                 <tr key={record.id}>
                   
                   
@@ -154,13 +192,6 @@ const YourComponentTable = () => {
               ))}
             </tbody>
           </table>
-          <Pagination
-                total={records?.length}
-                current={offset}
-                pageSize={pageLimit}
-                onChange={(val) => setOffset(val)}
-                showLessItems
-              />
           </div>
         )}
       </div>

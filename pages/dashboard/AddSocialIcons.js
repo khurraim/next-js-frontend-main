@@ -103,7 +103,7 @@ function AddSocialIcons() {
                                     
                                 </div>
                             )}
-                            <div className="icon-container card d-flex flex-wrap" style={{ width: '1440px', height: '400px', overflowY: 'auto' }}>
+                            <div className="icon-container card d-flex flex-wrap" style={{ width: '100%', height: '400px', overflowY: 'auto' }}>
                                 {[...solidIcons, ...brandIcons].map((item, index) => (
                                     <div
                                     key={index}
